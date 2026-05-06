@@ -1,0 +1,29 @@
+[
+  {
+    "id": "tournoi-printemps-2025",
+    "titre": "Tournoi de Printemps",
+    "date": "2025-06-14",
+    "heure": "14h00",
+    "type": "tournoi",
+    "description": "Tournoi interne open à tous les niveaux. Formule suisse en 5 rondes. Inscription obligatoire avant le 10 juin.",
+    "lieu": "Salle de la Colonne, Les Epesses"
+  },
+  {
+    "id": "soiree-blitz-juin-2025",
+    "titre": "Soirée Blitz",
+    "date": "2025-06-02",
+    "heure": "18h15",
+    "type": "blitz",
+    "description": "Parties rapides (5 minutes par joueur) dans une ambiance conviviale. Ouvert à tous les membres.",
+    "lieu": "Salle de la Colonne, Les Epesses"
+  },
+  {
+    "id": "cours-debutants-juillet-2025",
+    "titre": "Stage Initiation Échecs",
+    "date": "2025-07-07",
+    "heure": "10h00",
+    "type": "cours",
+    "description": "Stage d'initiation aux échecs pour les débutants de 8 ans et plus. Règles du jeu, tactiques de base, parties commentées.",
+    "lieu": "Salle de la Colonne, Les Epesses"
+  }
+]

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80">
+  <g fill="none" stroke="rgba(201,146,42,0.08)" stroke-width="1">
+    <!-- Simplified pawn shape -->
+    <circle cx="40" cy="20" r="8"/>
+    <path d="M30 50 Q30 35 40 32 Q50 35 50 50 Z"/>
+    <rect x="26" y="50" width="28" height="5" rx="2"/>
+  </g>
+</svg>

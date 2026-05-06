@@ -1,0 +1,46 @@
+{
+  "saison": "2024-2025",
+  "competitions": [
+    {
+      "nom": "Championnat Départemental Vendée",
+      "equipe": "1re équipe",
+      "classement": 3,
+      "matchs": [
+        {
+          "adversaire": "Club d'Échecs de La Roche-sur-Yon",
+          "domicile": true,
+          "score_nous": 3,
+          "score_eux": 1,
+          "resultat": "victoire"
+        },
+        {
+          "adversaire": "Club de Challans",
+          "domicile": false,
+          "score_nous": 2,
+          "score_eux": 2,
+          "resultat": "nul"
+        },
+        {
+          "adversaire": "Club des Sables-d'Olonne",
+          "domicile": true,
+          "score_nous": 1,
+          "score_eux": 3,
+          "resultat": "defaite"
+        },
+        {
+          "adversaire": "Club de Fontenay-le-Comte",
+          "domicile": false,
+          "score_nous": 3,
+          "score_eux": 1,
+          "resultat": "victoire"
+        }
+      ]
+    },
+    {
+      "nom": "Open Vendéen",
+      "equipe": "Individuel",
+      "classement": null,
+      "matchs": []
+    }
+  ]
+}

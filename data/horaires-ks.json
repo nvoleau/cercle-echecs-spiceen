@@ -1,0 +1,20 @@
+{
+  "seances": [
+    {
+      "id": "lundi",
+      "jour": "Lundi",
+      "heure_debut": "18h15",
+      "heure_fin": "19h45",
+      "libelle": "Cours & séance club",
+      "lieu": "Salle de la Colonne, Les Epesses"
+    },
+    {
+      "id": "mercredi",
+      "jour": "Mercredi",
+      "heure_debut": "18h15",
+      "heure_fin": "19h45",
+      "libelle": "Cours & séance club",
+      "lieu": "Salle de la Colonne, Les Epesses"
+    }
+  ]
+}
