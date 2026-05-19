@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, MapPin, ExternalLink } from 'lucide-react'
+import { Mail, MapPin, ExternalLink, Phone } from 'lucide-react'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -61,6 +61,12 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="text-club-gold mt-0.5 shrink-0" />
                 <span>Salle de la Colonne<br />Les Epesses, 85420</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <Phone size={16} className="text-club-gold shrink-0" />
+                <a href="tel:0607733305" className="hover:text-white transition-colors">
+                  06 07 73 33 05
+                </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-club-gold shrink-0" />

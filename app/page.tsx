@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Users, GraduationCap, Trophy, School, ArrowRight } from 'lucide-react'
+import { Users, GraduationCap, Trophy, School, ArrowRight, Gift } from 'lucide-react'
 import SectionHeader from '@/components/SectionHeader'
 import ScheduleGrid from '@/components/ScheduleGrid'
 import reader from '@/lib/reader'
@@ -149,6 +149,13 @@ export default async function HomePage() {
               subtitle="Deux créneaux hebdomadaires ouverts à tous. Pas besoin de vous inscrire pour votre première venue — venez simplement !"
               centered
             />
+          </div>
+          <div className="mb-6 flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl px-5 py-4 text-amber-800">
+            <Gift size={20} className="shrink-0 mt-0.5 text-amber-600" />
+            <div>
+              <p className="font-semibold text-sm">1ère séance offerte</p>
+              <p className="text-sm mt-0.5 text-amber-700">Venez découvrir le club sans engagement — aucune inscription préalable nécessaire.</p>
+            </div>
           </div>
           <ScheduleGrid horaires={horaires} />
         </div>

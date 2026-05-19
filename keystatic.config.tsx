@@ -20,7 +20,7 @@ export default config({
       name: 'Cercle d\'Échecs Spicéen',
     },
     navigation: {
-      Contenu: ['evenements', 'horaires', 'resultats'],
+      Contenu: ['evenements', 'horaires', 'tarifs', 'resultats'],
     },
   },
 
@@ -82,6 +82,35 @@ export default config({
   },
 
   singletons: {
+    tarifs: singleton({
+      label: 'Tarifs',
+      path: 'data/tarifs-ks',
+      format: { data: 'json' },
+      schema: {
+        saison: fields.text({
+          label: 'Saison (ex: 2025-2026)',
+          validation: { isRequired: true },
+        }),
+        cotisation_adulte: fields.text({
+          label: 'Cotisation adulte',
+          description: 'Ex: 80 € — laisser "—" si non encore défini',
+        }),
+        cotisation_enfant: fields.text({
+          label: 'Cotisation enfant (−18 ans)',
+          description: 'Ex: 50 € — laisser "—" si non encore défini',
+        }),
+        licence_ffe_incluse: fields.checkbox({
+          label: 'Licence FFE incluse dans la cotisation',
+          defaultValue: true,
+        }),
+        note: fields.text({
+          label: 'Note complémentaire',
+          description: 'Ex: Paiement en plusieurs fois possible',
+          multiline: true,
+        }),
+      },
+    }),
+
     horaires: singleton({
       label: 'Horaires des séances',
       path: 'data/horaires-ks',

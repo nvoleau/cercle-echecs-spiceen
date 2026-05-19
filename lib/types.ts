@@ -38,6 +38,14 @@ export interface Competition {
   matchs: Match[]
 }
 
+export interface Tarifs {
+  saison: string
+  cotisation_adulte: string
+  cotisation_enfant: string
+  licence_ffe_incluse: boolean
+  note: string
+}
+
 export interface Resultats {
   saison: string
   competitions: Competition[]

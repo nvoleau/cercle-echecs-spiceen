@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MapPin, Clock, ExternalLink } from 'lucide-react'
+import { MapPin, Clock, ExternalLink, Phone, Mail, Gift, Euro, CheckCircle } from 'lucide-react'
 import SectionHeader from '@/components/SectionHeader'
 import ContactForm from '@/components/ContactForm'
 import ScheduleGrid from '@/components/ScheduleGrid'
 import reader from '@/lib/reader'
-import type { Horaire } from '@/lib/types'
+import type { Horaire, Tarifs } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
 
@@ -25,6 +25,20 @@ export default async function ContactPage() {
     libelle: s.libelle ?? '',
     lieu: s.lieu,
   }))
+
+  const tarifsData = await reader.singletons.tarifs.read()
+  const tarifs: Tarifs | null = tarifsData
+    ? {
+        saison: tarifsData.saison,
+        cotisation_adulte: tarifsData.cotisation_adulte ?? '—',
+        cotisation_enfant: tarifsData.cotisation_enfant ?? '—',
+        licence_ffe_incluse: tarifsData.licence_ffe_incluse ?? true,
+        note: tarifsData.note ?? '',
+      }
+    : null
+
+  const tarifAdulteConnu = tarifs?.cotisation_adulte && tarifs.cotisation_adulte !== '—'
+  const tarifEnfantConnu = tarifs?.cotisation_enfant && tarifs.cotisation_enfant !== '—'
 
   return (
     <div className="py-16">
@@ -55,13 +69,30 @@ export default async function ContactPage() {
               <h2 className="font-serif text-2xl font-bold text-club-dark mb-4">
                 Où nous trouver ?
               </h2>
-              <div className="flex items-start gap-2 text-club-gray mb-4">
-                <MapPin size={18} className="text-club-gold mt-0.5 shrink-0" />
-                <div>
-                  <p className="font-medium text-club-dark">Salle de la Colonne</p>
-                  <p className="text-sm">Les Epesses, 85420</p>
-                </div>
-              </div>
+              <ul className="flex flex-col gap-3 mb-4">
+                <li className="flex items-start gap-2 text-club-gray">
+                  <MapPin size={18} className="text-club-gold mt-0.5 shrink-0" />
+                  <div>
+                    <p className="font-medium text-club-dark">Salle de la Colonne</p>
+                    <p className="text-sm">Les Epesses, 85420</p>
+                  </div>
+                </li>
+                <li className="flex items-center gap-2 text-club-gray text-sm">
+                  <Phone size={16} className="text-club-gold shrink-0" />
+                  <a href="tel:0607733305" className="hover:text-club-dark transition-colors">
+                    06 07 73 33 05
+                  </a>
+                </li>
+                <li className="flex items-center gap-2 text-club-gray text-sm">
+                  <Mail size={16} className="text-club-gold shrink-0" />
+                  <a
+                    href="mailto:cercledechecsSpiceen@gmail.com"
+                    className="hover:text-club-dark transition-colors"
+                  >
+                    cercledechecsSpiceen@gmail.com
+                  </a>
+                </li>
+              </ul>
               {/* Google Maps embed */}
               <div className="w-full h-52 rounded-xl overflow-hidden border border-gray-200">
                 <iframe
@@ -82,7 +113,47 @@ export default async function ContactPage() {
               <h2 className="font-serif text-2xl font-bold text-club-dark mb-4 flex items-center gap-2">
                 <Clock size={20} className="text-club-gold" /> Horaires des séances
               </h2>
+              {/* Séance d'essai */}
+              <div className="mb-4 flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-amber-800">
+                <Gift size={18} className="shrink-0 mt-0.5 text-amber-600" />
+                <div>
+                  <p className="font-semibold text-sm">1ère séance offerte</p>
+                  <p className="text-sm mt-0.5 text-amber-700">
+                    Venez découvrir le club sans engagement — aucune inscription préalable nécessaire.
+                  </p>
+                </div>
+              </div>
               <ScheduleGrid horaires={horaires} />
+            </div>
+
+            {/* Tarifs */}
+            <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6">
+              <h2 className="font-serif text-xl font-bold text-club-dark mb-4 flex items-center gap-2">
+                <Euro size={18} className="text-club-gold" /> Tarifs {tarifs?.saison && <span className="text-club-gray font-sans text-sm font-normal">{tarifs.saison}</span>}
+              </h2>
+              <ul className="flex flex-col gap-3 text-sm">
+                <li className="flex items-center justify-between border-b border-gray-100 pb-3">
+                  <span className="text-club-gray">Adulte</span>
+                  <span className="font-semibold text-club-dark">
+                    {tarifAdulteConnu ? tarifs!.cotisation_adulte : <a href="tel:0607733305" className="text-club-gold hover:underline">Nous contacter</a>}
+                  </span>
+                </li>
+                <li className="flex items-center justify-between border-b border-gray-100 pb-3">
+                  <span className="text-club-gray">Enfant (−18 ans)</span>
+                  <span className="font-semibold text-club-dark">
+                    {tarifEnfantConnu ? tarifs!.cotisation_enfant : <a href="tel:0607733305" className="text-club-gold hover:underline">Nous contacter</a>}
+                  </span>
+                </li>
+                {tarifs?.licence_ffe_incluse && (
+                  <li className="flex items-center gap-2 text-green-700 text-xs">
+                    <CheckCircle size={14} className="shrink-0" />
+                    Licence FFE incluse dans la cotisation
+                  </li>
+                )}
+              </ul>
+              {tarifs?.note && (
+                <p className="mt-3 text-xs text-club-gray">{tarifs.note}</p>
+              )}
             </div>
 
             {/* Inscription HelloAsso */}
