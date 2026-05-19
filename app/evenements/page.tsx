@@ -24,6 +24,9 @@ export default async function EvenementsPage() {
     type: e.entry.type as Evenement['type'],
     description: e.entry.description,
     lieu: e.entry.lieu,
+    tarif: e.entry.tarif ?? null,
+    lienInscription: e.entry.lienInscription ?? null,
+    affiche: e.entry.affiche ?? null,
   }))
 
   const futurs = all.filter((e) => isFutureEvent(e.date))

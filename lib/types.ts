@@ -9,6 +9,9 @@ export interface Evenement {
   type: EventType
   description: string
   lieu: string
+  tarif?: string | null
+  lienInscription?: string | null
+  affiche?: string | null
 }
 
 export interface Horaire {

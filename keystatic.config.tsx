@@ -65,6 +65,18 @@ export default config({
           label: 'Lieu',
           defaultValue: 'Salle de la Colonne, Les Epesses',
         }),
+        tarif: fields.text({
+          label: 'Tarif',
+          description: 'Ex: 8 € — laisser vide si gratuit',
+        }),
+        lienInscription: fields.text({
+          label: 'Lien d\'inscription',
+          description: 'URL HelloAsso ou autre plateforme (laisser vide si pas d\'inscription en ligne)',
+        }),
+        affiche: fields.text({
+          label: 'Affiche (chemin image)',
+          description: 'Chemin vers l\'image dans /public, ex: /evenements/affiche-tournoi-juin-2026.jpg',
+        }),
       },
     }),
   },

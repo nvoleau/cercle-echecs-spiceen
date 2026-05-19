@@ -27,11 +27,11 @@ export default function Navbar() {
             className="flex items-center gap-3 hover:opacity-90 transition-opacity"
           >
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="Logo Cercle d'Échecs Spicéen"
               width={40}
               height={40}
-              className="w-10 h-10"
+              className="w-10 h-10 rounded-full"
             />
             <span className="text-white font-serif font-bold text-lg leading-tight hidden sm:block">
               Cercle d&apos;Échecs<br />
