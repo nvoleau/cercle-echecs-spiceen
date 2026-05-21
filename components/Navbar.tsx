@@ -58,9 +58,36 @@ export default function Navbar() {
                 </Link>
               )
             })}
+            {/* Réseaux sociaux */}
+            <div className="flex items-center gap-1 ml-2 border-l border-white/10 pl-3">
+              <a
+                href="https://www.facebook.com/profile.php?id=61583690023524"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-8 h-8 flex items-center justify-center rounded text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" width={16} height={16} aria-hidden="true">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/cercledechecspiceen/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-8 h-8 flex items-center justify-center rounded text-gray-300 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={16} height={16} aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+            </div>
             <Link
               href="/contact"
-              className="ml-4 px-4 py-2 bg-club-gold text-white text-sm font-semibold rounded hover:bg-amber-600 transition-colors"
+              className="ml-3 px-4 py-2 bg-club-gold text-white text-sm font-semibold rounded hover:bg-amber-600 transition-colors"
             >
               Nous rejoindre
             </Link>
@@ -99,6 +126,34 @@ export default function Navbar() {
                 </Link>
               )
             })}
+            <div className="flex items-center gap-3 px-3 pt-3 pb-1 border-t border-white/10 mt-1">
+              <a
+                href="https://www.facebook.com/profile.php?id=61583690023524"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="flex items-center gap-2 text-gray-300 hover:text-white text-sm transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" width={16} height={16} aria-hidden="true">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+                Facebook
+              </a>
+              <a
+                href="https://www.instagram.com/cercledechecspiceen/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex items-center gap-2 text-gray-300 hover:text-white text-sm transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={16} height={16} aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+                </svg>
+                Instagram
+              </a>
+            </div>
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
