@@ -74,7 +74,7 @@ export default async function ContactPage() {
                   <MapPin size={18} className="text-club-gold mt-0.5 shrink-0" />
                   <div>
                     <p className="font-medium text-club-dark">Salle de la Colonne</p>
-                    <p className="text-sm">Les Epesses, 85420</p>
+                    <p className="text-sm">Les Epesses, 85590</p>
                   </div>
                 </li>
                 <li className="flex items-center gap-2 text-club-gray text-sm">

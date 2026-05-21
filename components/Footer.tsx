@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, MapPin, ExternalLink, Phone } from 'lucide-react'
+import { Mail, MapPin, ExternalLink, Phone, Facebook, Instagram } from 'lucide-react'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -23,6 +23,26 @@ export default function Footer() {
             <p className="text-sm text-gray-400 leading-relaxed">
               Club affilié à la Fédération Française des Échecs. Ouvert à tous les niveaux, débutants comme confirmés.
             </p>
+            <div className="flex items-center gap-3 mt-1">
+              <a
+                href="https://www.facebook.com/profile.php?id=61583690023524"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook du Cercle d'Échecs Spicéen"
+                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-club-gold transition-colors"
+              >
+                <Facebook size={16} />
+              </a>
+              <a
+                href="https://www.instagram.com/cercledechecspiceen/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram du Cercle d'Échecs Spicéen"
+                className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-club-gold transition-colors"
+              >
+                <Instagram size={16} />
+              </a>
+            </div>
           </div>
 
           {/* Links */}
@@ -71,10 +91,10 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-club-gold shrink-0" />
                 <a
-                  href="mailto:contact@cercle-echecs-spiceen.fr"
+                  href="mailto:cercledechecsSpiceen@gmail.com"
                   className="hover:text-white transition-colors"
                 >
-                  contact@cercle-echecs-spiceen.fr
+                  cercledechecsSpiceen@gmail.com
                 </a>
               </li>
             </ul>

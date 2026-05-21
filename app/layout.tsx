@@ -44,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 '@type': 'PostalAddress',
                 streetAddress: 'Salle de la Colonne',
                 addressLocality: 'Les Epesses',
-                postalCode: '85420',
+                postalCode: '85590',
                 addressCountry: 'FR',
               },
               sport: 'Échecs',

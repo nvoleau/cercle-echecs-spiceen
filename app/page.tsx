@@ -13,14 +13,14 @@ export const dynamic = 'force-dynamic'
 export const metadata: Metadata = {
   title: 'Accueil — Club d\'échecs aux Epesses, Vendée',
   description:
-    'Bienvenue au Cercle d\'Échecs Spicéen, club d\'échecs affilié FFE basé aux Epesses (Vendée). Rejoignez-nous chaque lundi et mercredi à 18h15.',
+    'Bienvenue au Cercle d\'Échecs Spicéen, club d\'échecs affilié FFE aux Epesses (Vendée). Rejoignez-nous chaque lundi et mercredi à 18h15.',
 }
 
 const reasons = [
   {
     icon: Users,
     title: 'Une communauté soudée',
-    text: 'Moins de 30 licenciés qui se retrouvent chaque semaine dans une ambiance conviviale et bienveillante.',
+    text: 'Des licenciés qui se retrouvent chaque semaine dans une ambiance conviviale et bienveillante.',
   },
   {
     icon: GraduationCap,
@@ -35,7 +35,7 @@ const reasons = [
   {
     icon: School,
     title: 'Ouverture scolaire',
-    text: 'Le club accueille les jeunes dès 8 ans et collabore avec les établissements locaux pour initier les enfants.',
+    text: 'Le club accueille les jeunes dès 5 ans et collabore avec les établissements locaux pour initier les enfants.',
   },
 ]
 
@@ -90,18 +90,17 @@ export default async function HomePage() {
 
           {/* Nom du club — identité de marque */}
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-3">
-            Cercle d&apos;Échecs<br />
-            <span className="text-club-gold">Spicéen</span>
+            <span className="text-club-gold">Cercle d'échecs Spicéen</span>
           </h1>
           <p className="text-gray-400 text-sm font-semibold tracking-[0.25em] uppercase mb-6">
-            Jouez · Progressez · Compétez
+            Convivial par nature, ambitieux par passion !
           </p>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            Club d&apos;échecs affilié à la FFE, basé aux Epesses (Vendée). Séances ouvertes à tous les niveaux chaque lundi et mercredi à 18h15.
+            Club d&apos;échecs affilié à la FFE, aux Epesses (Vendée). Séances ouvertes à tous les niveaux chaque lundi et mercredi à 18h15.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="px-8 py-4 bg-club-gold text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-base">
-              Nous rejoindre
+              Nous contacter
             </Link>
             <Link href="/evenements" className="px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-club-dark transition-colors text-base">
               Voir nos événements
@@ -123,8 +122,8 @@ export default async function HomePage() {
               <div className="mt-8 flex flex-col gap-4">
                 {[
                   'Affilié à la Fédération Française des Échecs (FFE)',
-                  'Moins de 30 licenciés, des débutants aux classés',
-                  'Basé à la Salle de la Colonne, Les Epesses (85420)',
+                  'Plus de 15 licenciés, des débutants aux classés',
+                  'Salle de la Colonne, Les Epesses (85590)',
                 ].map((text) => (
                   <div key={text} className="flex items-center gap-3 text-club-gray text-sm">
                     <span className="w-2 h-2 rounded-full bg-club-gold shrink-0" />
