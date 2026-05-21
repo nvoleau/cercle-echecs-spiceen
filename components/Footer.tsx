@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Mail, MapPin, ExternalLink, Phone, Facebook, Instagram } from 'lucide-react'
+import { Mail, MapPin, ExternalLink, Phone } from 'lucide-react'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -31,7 +31,9 @@ export default function Footer() {
                 aria-label="Facebook du Cercle d'Échecs Spicéen"
                 className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-club-gold transition-colors"
               >
-                <Facebook size={16} />
+                <svg viewBox="0 0 24 24" fill="currentColor" width={16} height={16} aria-hidden="true">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
               </a>
               <a
                 href="https://www.instagram.com/cercledechecspiceen/"
@@ -40,7 +42,11 @@ export default function Footer() {
                 aria-label="Instagram du Cercle d'Échecs Spicéen"
                 className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-club-gold transition-colors"
               >
-                <Instagram size={16} />
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width={16} height={16} aria-hidden="true">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+                </svg>
               </a>
             </div>
           </div>

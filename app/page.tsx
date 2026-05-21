@@ -90,7 +90,7 @@ export default async function HomePage() {
 
           {/* Nom du club — identité de marque */}
           <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-3">
-            <span className="text-club-gold">Cercle d'échecs Spicéen</span>
+            <span className="text-club-gold">Cercle d&apos;échecs Spicéen</span>
           </h1>
           <p className="text-gray-400 text-sm font-semibold tracking-[0.25em] uppercase mb-6">
             Convivial par nature, ambitieux par passion !
