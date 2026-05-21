@@ -4,8 +4,9 @@ import Image from 'next/image'
 import { Users, GraduationCap, Trophy, School, ArrowRight, Gift } from 'lucide-react'
 import SectionHeader from '@/components/SectionHeader'
 import ScheduleGrid from '@/components/ScheduleGrid'
+import ArticleCard from '@/components/ArticleCard'
 import reader from '@/lib/reader'
-import type { Horaire } from '@/lib/types'
+import type { Horaire, Article } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
 
@@ -49,6 +50,19 @@ export default async function HomePage() {
     lieu: s.lieu,
   }))
 
+  const rawArticles = await reader.collections.articles.all()
+  const latestArticles: Article[] = rawArticles
+    .map((a) => ({
+      slug: a.slug,
+      titre: a.entry.titre.name,
+      date: a.entry.date ?? '',
+      resume: a.entry.resume ?? '',
+      image_couverture: a.entry.image_couverture ?? null,
+    }))
+    .filter((a) => a.date)
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 3)
+
   return (
     <>
       {/* Hero */}
@@ -59,13 +73,29 @@ export default async function HomePage() {
           aria-hidden="true"
         />
         <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <p className="text-club-gold text-xs font-semibold tracking-[0.3em] uppercase mb-4">
-            Cercle d&apos;Échecs Spicéen
-          </p>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-6 text-balance">
-            Jouez. Progressez.{' '}
-            <span className="text-club-gold">Compétez.</span>
+          {/* Logo mis en avant */}
+          <div className="flex justify-center mb-8">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full bg-club-gold/20 blur-2xl scale-125" aria-hidden="true" />
+              <Image
+                src="/logo.png"
+                alt="Logo Cercle d'Échecs Spicéen"
+                width={140}
+                height={140}
+                className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-full ring-4 ring-club-gold/60 shadow-2xl"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Nom du club — identité de marque */}
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mb-3">
+            Cercle d&apos;Échecs<br />
+            <span className="text-club-gold">Spicéen</span>
           </h1>
+          <p className="text-gray-400 text-sm font-semibold tracking-[0.25em] uppercase mb-6">
+            Jouez · Progressez · Compétez
+          </p>
           <p className="text-gray-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
             Club d&apos;échecs affilié à la FFE, basé aux Epesses (Vendée). Séances ouvertes à tous les niveaux chaque lundi et mercredi à 18h15.
           </p>
@@ -160,6 +190,36 @@ export default async function HomePage() {
           <ScheduleGrid horaires={horaires} />
         </div>
       </section>
+
+      {/* Blog — affiché seulement si des articles existent */}
+      {latestArticles.length > 0 && (
+        <section className="py-20 bg-club-card">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-end justify-between mb-10">
+              <SectionHeader
+                label="Actualités"
+                title="Derniers articles"
+              />
+              <Link
+                href="/blog"
+                className="hidden sm:inline-flex items-center gap-2 text-club-gold text-sm font-semibold hover:gap-3 transition-all"
+              >
+                Tous les articles <ArrowRight size={14} />
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {latestArticles.map((article) => (
+                <ArticleCard key={article.slug} article={article} />
+              ))}
+            </div>
+            <div className="mt-8 text-center sm:hidden">
+              <Link href="/blog" className="inline-flex items-center gap-2 text-club-gold text-sm font-semibold">
+                Tous les articles <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="bg-club-gold py-16">

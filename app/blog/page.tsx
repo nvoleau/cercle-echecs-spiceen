@@ -1,0 +1,63 @@
+import type { Metadata } from 'next'
+import SectionHeader from '@/components/SectionHeader'
+import ArticleCard from '@/components/ArticleCard'
+import reader from '@/lib/reader'
+import type { Article } from '@/lib/types'
+
+export const dynamic = 'force-dynamic'
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Actualités et articles du Cercle d\'Échecs Spicéen.',
+}
+
+export default async function BlogPage() {
+  const raw = await reader.collections.articles.all()
+
+  const articles: Article[] = raw
+    .map((a) => ({
+      slug: a.slug,
+      titre: a.entry.titre.name,
+      date: a.entry.date ?? '',
+      resume: a.entry.resume ?? '',
+      image_couverture: a.entry.image_couverture ?? null,
+    }))
+    .filter((a) => a.date)
+    .sort((a, b) => b.date.localeCompare(a.date))
+
+  return (
+    <div className="min-h-screen bg-white">
+      {/* En-tête */}
+      <section className="bg-club-dark py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <SectionHeader
+            label="Actualités"
+            title="Le blog du club"
+            subtitle="Tournois, vie du club, conseils échecs — suivez toute l'actualité du Cercle d'Échecs Spicéen."
+            light
+            centered
+          />
+        </div>
+      </section>
+
+      {/* Liste des articles */}
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {articles.length === 0 ? (
+            <div className="text-center py-20 text-club-gray">
+              <p className="text-5xl mb-6 opacity-20">♟</p>
+              <p className="text-lg font-medium">Aucun article pour l&apos;instant.</p>
+              <p className="text-sm mt-2">Revenez bientôt !</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {articles.map((article) => (
+                <ArticleCard key={article.slug} article={article} />
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
+    </div>
+  )
+}

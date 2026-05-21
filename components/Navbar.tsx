@@ -10,6 +10,7 @@ const links = [
   { href: '/', label: 'Accueil' },
   { href: '/evenements', label: 'Événements' },
   { href: '/competitions', label: 'Compétitions' },
+  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ]
 
@@ -20,7 +21,7 @@ export default function Navbar() {
   return (
     <nav className="bg-club-dark sticky top-0 z-50 border-b border-white/10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20">
           {/* Logo + name */}
           <Link
             href="/"
@@ -29,13 +30,13 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="Logo Cercle d'Échecs Spicéen"
-              width={40}
-              height={40}
-              className="w-10 h-10 rounded-full"
+              width={52}
+              height={52}
+              className="w-[52px] h-[52px] rounded-full ring-2 ring-club-gold/40"
             />
-            <span className="text-white font-serif font-bold text-lg leading-tight hidden sm:block">
+            <span className="text-white font-serif font-bold text-xl leading-tight">
               Cercle d&apos;Échecs<br />
-              <span className="text-club-gold text-sm font-sans font-medium">Spicéen</span>
+              <span className="text-club-gold text-base font-sans font-semibold tracking-wide">Spicéen</span>
             </span>
           </Link>
 

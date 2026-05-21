@@ -1,3 +1,11 @@
+export interface Article {
+  slug: string
+  titre: string
+  date: string
+  resume: string
+  image_couverture: string | null
+}
+
 export type EventType = 'tournoi' | 'blitz' | 'cours' | 'autre'
 export type MatchResult = 'victoire' | 'nul' | 'defaite'
 

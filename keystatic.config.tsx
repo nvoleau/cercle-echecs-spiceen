@@ -20,11 +20,52 @@ export default config({
       name: 'Cercle d\'Échecs Spicéen',
     },
     navigation: {
+      Blog: ['articles'],
       Contenu: ['evenements', 'horaires', 'tarifs', 'resultats'],
     },
   },
 
   collections: {
+    articles: collection({
+      label: 'Articles de blog',
+      slugField: 'titre',
+      path: 'data/articles/*',
+      format: { contentField: 'contenu' },
+      schema: {
+        titre: fields.slug({
+          name: {
+            label: 'Titre',
+            validation: { isRequired: true },
+          },
+        }),
+        date: fields.date({
+          label: 'Date de publication',
+          validation: { isRequired: true },
+        }),
+        resume: fields.text({
+          label: 'Résumé',
+          description: 'Texte court affiché dans les aperçus (2-3 phrases)',
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+        image_couverture: fields.image({
+          label: 'Image de couverture',
+          directory: 'public/articles',
+          publicPath: '/articles/',
+        }),
+        contenu: fields.document({
+          label: 'Contenu',
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: 'public/articles',
+            publicPath: '/articles/',
+          },
+        }),
+      },
+    }),
+
     evenements: collection({
       label: 'Événements',
       slugField: 'titre',
