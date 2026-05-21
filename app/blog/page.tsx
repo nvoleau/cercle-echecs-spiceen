@@ -17,7 +17,7 @@ export default async function BlogPage() {
   const articles: Article[] = raw
     .map((a) => ({
       slug: a.slug,
-      titre: a.entry.titre.name,
+      titre: a.entry.titre,
       date: a.entry.date ?? '',
       resume: a.entry.resume ?? '',
       image_couverture: a.entry.image_couverture ?? null,
