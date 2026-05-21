@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await reader.collections.articles.read(slug)
   if (!article) return {}
   return {
-    title: article.titre.name,
+    title: article.titre,
     description: article.resume ?? undefined,
   }
 }
@@ -42,7 +42,7 @@ export default async function ArticlePage({ params }: Props) {
         <div className="relative w-full aspect-[21/9] bg-club-dark overflow-hidden">
           <Image
             src={article.image_couverture}
-            alt={article.titre.name}
+            alt={article.titre}
             fill
             className="object-cover opacity-80"
             priority
@@ -69,7 +69,7 @@ export default async function ArticlePage({ params }: Props) {
 
         {/* Titre */}
         <h1 className="font-serif text-3xl sm:text-4xl font-bold text-club-dark leading-tight mb-6">
-          {article.titre.name}
+          {article.titre}
         </h1>
 
         {/* Résumé */}
