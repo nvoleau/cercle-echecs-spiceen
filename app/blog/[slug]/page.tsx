@@ -89,21 +89,17 @@ export default async function ArticlePage({ params }: Props) {
             renderers={{
               block: {
                 heading: ({ level, children, textAlign }) => {
-                  const Tag = `h${level}` as keyof JSX.IntrinsicElements
                   const sizes: Record<number, string> = {
                     1: 'text-3xl mt-10 mb-4',
                     2: 'text-2xl mt-8 mb-3',
                     3: 'text-xl mt-6 mb-2',
                     4: 'text-lg mt-4 mb-2',
                   }
-                  return (
-                    <Tag
-                      style={{ textAlign }}
-                      className={`font-serif font-bold text-club-dark ${sizes[level] ?? 'text-base mt-4 mb-2'}`}
-                    >
-                      {children}
-                    </Tag>
-                  )
+                  const cls = `font-serif font-bold text-club-dark ${sizes[level] ?? 'text-base mt-4 mb-2'}`
+                  if (level === 2) return <h2 style={{ textAlign }} className={cls}>{children}</h2>
+                  if (level === 3) return <h3 style={{ textAlign }} className={cls}>{children}</h3>
+                  if (level === 4) return <h4 style={{ textAlign }} className={cls}>{children}</h4>
+                  return <h1 style={{ textAlign }} className={cls}>{children}</h1>
                 },
                 paragraph: ({ children, textAlign }) => (
                   <p style={{ textAlign }} className="text-club-gray leading-relaxed mb-5 text-base">
