@@ -1,8 +1,9 @@
 import { config, collection, singleton, fields } from '@keystatic/core'
 
+// NEXT_PUBLIC_ requis pour que la détection fonctionne aussi côté client (admin UI)
 const useGithubStorage =
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID !== undefined &&
-  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET !== undefined
+  !!process.env.NEXT_PUBLIC_GITHUB_OWNER &&
+  !!process.env.NEXT_PUBLIC_GITHUB_REPO
 
 export default config({
   storage: useGithubStorage
