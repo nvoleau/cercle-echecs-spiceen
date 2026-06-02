@@ -38,5 +38,8 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/keystatic/:path*', '/api/keystatic/:path*'],
+  matcher: [
+    '/keystatic((?!/github-login).*)',
+    '/api/keystatic((?!/github).*)',
+  ],
 }
