@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
   }
 
   const apiKey = process.env.RESEND_API_KEY
-  const contactEmail = process.env.CONTACT_EMAIL ?? 'contact@cercle-echecs-spiceen.fr'
+  const contactEmail = process.env.CONTACT_EMAIL ?? 'cercledechecspiceen@gmail.com'
 
   if (!apiKey) {
     console.error('RESEND_API_KEY is not configured')

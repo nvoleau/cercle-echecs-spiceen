@@ -71,7 +71,7 @@ const jsonLd = {
   logo: `${siteUrl}/logo.png`,
   image: `${siteUrl}/logo.png`,
   telephone: '+33607733305',
-  email: 'cercledechecsSpiceen@gmail.com',
+  email: 'cercledechecspiceen@gmail.com',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Salle de la Colonne',

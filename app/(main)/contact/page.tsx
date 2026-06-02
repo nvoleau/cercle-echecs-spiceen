@@ -65,7 +65,7 @@ export default async function ContactPage() {
     name: 'Cercle d\'Échecs Spicéen',
     url: siteUrl,
     telephone: '+33607733305',
-    email: 'cercledechecsSpiceen@gmail.com',
+    email: 'cercledechecspiceen@gmail.com',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Salle de la Colonne',
@@ -141,10 +141,10 @@ export default async function ContactPage() {
                 <li className="flex items-center gap-2 text-club-gray text-sm">
                   <Mail size={16} className="text-club-gold shrink-0" />
                   <a
-                    href="mailto:cercledechecsSpiceen@gmail.com"
+                    href="mailto:cercledechecspiceen@gmail.com"
                     className="hover:text-club-dark transition-colors"
                   >
-                    cercledechecsSpiceen@gmail.com
+                    cercledechecspiceen@gmail.com
                   </a>
                 </li>
               </ul>

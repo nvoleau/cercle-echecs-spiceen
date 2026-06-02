@@ -97,10 +97,10 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-club-gold shrink-0" />
                 <a
-                  href="mailto:cercledechecsSpiceen@gmail.com"
+                  href="mailto:cercledechecspiceen@gmail.com"
                   className="hover:text-white transition-colors"
                 >
-                  cercledechecsSpiceen@gmail.com
+                  cercledechecspiceen@gmail.com
                 </a>
               </li>
             </ul>
