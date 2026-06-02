@@ -4,7 +4,13 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spice
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: { userAgent: '*', allow: '/' },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/keystatic', '/keystatic-login', '/api/'],
+      },
+    ],
     sitemap: `${siteUrl}/sitemap.xml`,
   }
 }

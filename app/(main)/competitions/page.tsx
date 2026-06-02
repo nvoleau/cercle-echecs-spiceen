@@ -7,10 +7,29 @@ import { matchResultLabel, matchResultClass } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+
 export const metadata: Metadata = {
-  title: 'Compétitions',
+  title: 'Compétitions & Résultats',
   description:
-    'Résultats et classements des équipes du Cercle d\'Échecs Spicéen en championnat départemental Vendée et tournois ouverts.',
+    'Résultats et classements des équipes du Cercle d\'Échecs Spicéen en championnat départemental de Vendée et tournois ouverts. Suivez nos performances saison après saison.',
+  alternates: {
+    canonical: `${siteUrl}/competitions`,
+  },
+  openGraph: {
+    title: 'Compétitions & Résultats — Cercle d\'Échecs Spicéen',
+    description:
+      'Résultats et classements des équipes du Cercle d\'Échecs Spicéen en championnat départemental de Vendée.',
+    url: `${siteUrl}/competitions`,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Compétitions du Cercle d\'Échecs Spicéen',
+      },
+    ],
+  },
 }
 
 export default async function CompetitionsPage() {

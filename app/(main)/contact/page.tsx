@@ -9,10 +9,29 @@ import type { Horaire, Tarifs } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+
 export const metadata: Metadata = {
   title: 'Contact & Inscription',
   description:
-    'Contactez le Cercle d\'Échecs Spicéen pour rejoindre le club, poser une question ou obtenir des informations sur les séances et inscriptions.',
+    'Contactez le Cercle d\'Échecs Spicéen pour rejoindre le club aux Epesses (Vendée). Horaires, tarifs, inscriptions. Première séance offerte, sans engagement.',
+  alternates: {
+    canonical: `${siteUrl}/contact`,
+  },
+  openGraph: {
+    title: 'Contact & Inscription — Cercle d\'Échecs Spicéen',
+    description:
+      'Rejoignez le club d\'échecs aux Epesses (Vendée). Horaires, tarifs et inscription. Première séance offerte.',
+    url: `${siteUrl}/contact`,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Contact et inscription au Cercle d\'Échecs Spicéen',
+      },
+    ],
+  },
 }
 
 export default async function ContactPage() {
@@ -40,8 +59,43 @@ export default async function ContactPage() {
   const tarifAdulteConnu = tarifs?.cotisation_adulte && tarifs.cotisation_adulte !== '—'
   const tarifEnfantConnu = tarifs?.cotisation_enfant && tarifs.cotisation_enfant !== '—'
 
+  const contactJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SportsClub',
+    name: 'Cercle d\'Échecs Spicéen',
+    url: siteUrl,
+    telephone: '+33607733305',
+    email: 'cercledechecsSpiceen@gmail.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Salle de la Colonne',
+      addressLocality: 'Les Epesses',
+      postalCode: '85590',
+      addressRegion: 'Vendée',
+      addressCountry: 'FR',
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Monday',
+        opens: '18:15',
+        closes: '20:15',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Wednesday',
+        opens: '18:15',
+        closes: '20:15',
+      },
+    ],
+  }
+
   return (
     <div className="py-16">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <SectionHeader

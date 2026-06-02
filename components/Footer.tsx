@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Logo & presentation */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <Image src="/logo.png" alt="Logo CES" width={48} height={48} className="rounded-full" />
+              <Image src="/logo.png" alt="Logo Cercle d'Échecs Spicéen" width={48} height={48} className="rounded-full" />
               <div>
                 <p className="text-white font-serif font-bold text-lg leading-tight">
                   Cercle d&apos;Échecs Spicéen

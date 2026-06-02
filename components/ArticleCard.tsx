@@ -21,7 +21,7 @@ export default function ArticleCard({ article }: { article: Article }) {
         {article.image_couverture ? (
           <Image
             src={article.image_couverture}
-            alt={article.titre}
+            alt={`Illustration — ${article.titre}`}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"
           />
