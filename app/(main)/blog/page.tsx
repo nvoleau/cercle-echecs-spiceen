@@ -36,6 +36,7 @@ export default async function BlogPage() {
             subtitle="Tournois, vie du club, conseils échecs — suivez toute l'actualité du Cercle d'Échecs Spicéen."
             light
             centered
+            as="h1"
           />
         </div>
       </section>

@@ -48,6 +48,7 @@ export default async function ContactPage() {
             label="Contact"
             title="Prenez contact avec nous"
             subtitle="Une question, une envie de nous rejoindre ? Remplissez le formulaire ou venez directement lors d'une séance."
+            as="h1"
           />
         </div>
 
@@ -168,7 +169,7 @@ export default async function ContactPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-club-gold text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
               >
-                S&apos;inscrire sur HelloAsso <ExternalLink size={14} />
+                S&apos;inscrire sur HelloAsso <ExternalLink size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>

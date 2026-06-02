@@ -24,6 +24,7 @@ export default async function CompetitionsPage() {
             label="Saison en cours"
             title={`Compétitions ${data?.saison ?? ''}`}
             subtitle="Suivez les résultats de nos équipes engagées en championnat départemental de Vendée."
+            as="h1"
           />
         </div>
 
@@ -113,7 +114,7 @@ export default async function CompetitionsPage() {
             rel="noopener noreferrer"
             className="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-club-gold text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
           >
-            Site de la FFE <ExternalLink size={14} />
+            Site de la FFE <ExternalLink size={14} aria-hidden="true" />
           </a>
         </div>
       </div>

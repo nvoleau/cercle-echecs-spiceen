@@ -74,7 +74,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors inline-flex items-center gap-1"
                 >
-                  FFE — Site officiel <ExternalLink size={12} />
+                  FFE — Site officiel <ExternalLink size={12} aria-hidden="true" />
                 </a>
               </li>
             </ul>

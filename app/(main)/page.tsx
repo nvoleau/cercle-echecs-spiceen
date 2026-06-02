@@ -132,7 +132,7 @@ export default async function HomePage() {
                 ))}
               </div>
               <Link href="/contact" className="mt-8 inline-flex items-center gap-2 text-club-gold font-semibold hover:gap-3 transition-all text-sm">
-                Rejoindre le club <ArrowRight size={16} />
+                Rejoindre le club <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </div>
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
@@ -205,7 +205,7 @@ export default async function HomePage() {
                 href="/blog"
                 className="hidden sm:inline-flex items-center gap-2 text-club-gold text-sm font-semibold hover:gap-3 transition-all"
               >
-                Tous les articles <ArrowRight size={14} />
+                Tous les articles <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -215,7 +215,7 @@ export default async function HomePage() {
             </div>
             <div className="mt-8 text-center sm:hidden">
               <Link href="/blog" className="inline-flex items-center gap-2 text-club-gold text-sm font-semibold">
-                Tous les articles <ArrowRight size={14} />
+                Tous les articles <ArrowRight size={14} aria-hidden="true" />
               </Link>
             </div>
           </div>
