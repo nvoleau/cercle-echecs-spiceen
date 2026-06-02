@@ -135,11 +135,13 @@ export default async function HomePage() {
                 Rejoindre le club <ArrowRight size={16} />
               </Link>
             </div>
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-club-card flex items-center justify-center border-2 border-dashed border-gray-200">
-              <div className="text-center p-8">
-                <Image src="/logo.svg" alt="Cercle d'Échecs Spicéen" width={80} height={80} className="mx-auto mb-4 opacity-40" />
-                <p className="text-gray-400 text-sm">Photo du club à venir</p>
-              </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+              <Image
+                src="/club.jpg"
+                alt="Séance au Cercle d'Échecs Spicéen"
+                fill
+                className="object-cover"
+              />
             </div>
           </div>
         </div>
