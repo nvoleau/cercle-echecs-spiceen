@@ -14,7 +14,7 @@ export default function MentionsLegalesPage() {
       <section className="mb-8">
         <h2 className="font-serif text-xl font-bold text-club-dark mb-3">Éditeur du site</h2>
         <p className="text-club-gray leading-relaxed">
-          <strong className="text-club-dark">Cercle d'Échecs Spicéen</strong><br />
+          <strong className="text-club-dark">Cercle d&apos;Échecs Spicéen</strong><br />
           Association loi 1901 déclarée en préfecture<br />
           Numéro RNA : W852014120<br />
           Siège social : Salle de la Colonne, Les Epesses, 85590 Vendée<br />
@@ -26,7 +26,7 @@ export default function MentionsLegalesPage() {
       <section className="mb-8">
         <h2 className="font-serif text-xl font-bold text-club-dark mb-3">Responsable de publication</h2>
         <p className="text-club-gray leading-relaxed">
-          Jérémy Léger, président du Cercle d'Échecs Spicéen.
+          Jérémy Léger, président du Cercle d&apos;Échecs Spicéen.
         </p>
       </section>
 
@@ -43,7 +43,7 @@ export default function MentionsLegalesPage() {
       <section className="mb-8">
         <h2 className="font-serif text-xl font-bold text-club-dark mb-3">Propriété intellectuelle</h2>
         <p className="text-club-gray leading-relaxed">
-          L'ensemble des contenus présents sur ce site (textes, images, logo) sont la propriété du Cercle d'Échecs Spicéen ou de leurs auteurs respectifs. Toute reproduction, même partielle, est interdite sans autorisation préalable.
+          L&apos;ensemble des contenus présents sur ce site (textes, images, logo) sont la propriété du Cercle d&apos;Échecs Spicéen ou de leurs auteurs respectifs. Toute reproduction, même partielle, est interdite sans autorisation préalable.
         </p>
       </section>
 
@@ -58,7 +58,7 @@ export default function MentionsLegalesPage() {
       <section>
         <h2 className="font-serif text-xl font-bold text-club-dark mb-3">Cookies</h2>
         <p className="text-club-gray leading-relaxed">
-          Ce site n'utilise pas de cookies à des fins publicitaires ou de suivi. Des cookies techniques peuvent être déposés par l'hébergeur Vercel pour assurer le bon fonctionnement du site.
+          Ce site n&apos;utilise pas de cookies à des fins publicitaires ou de suivi. Des cookies techniques peuvent être déposés par l&apos;hébergeur Vercel pour assurer le bon fonctionnement du site.
         </p>
       </section>
     </div>

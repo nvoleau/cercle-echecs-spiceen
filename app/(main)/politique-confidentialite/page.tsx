@@ -15,7 +15,7 @@ export default function PolitiqueConfidentialitePage() {
       <section className="mb-8">
         <h2 className="font-serif text-xl font-bold text-club-dark mb-3">Responsable du traitement</h2>
         <p className="text-club-gray leading-relaxed">
-          <strong className="text-club-dark">Cercle d'Échecs Spicéen</strong><br />
+          <strong className="text-club-dark">Cercle d&apos;Échecs Spicéen</strong><br />
           Salle de la Colonne, Les Epesses, 85590 Vendée<br />
           Email : <a href="mailto:cercledechecspiceen@gmail.com" className="text-club-gold hover:underline">cercledechecspiceen@gmail.com</a>
         </p>
@@ -36,21 +36,21 @@ export default function PolitiqueConfidentialitePage() {
       <section className="mb-8">
         <h2 className="font-serif text-xl font-bold text-club-dark mb-3">Finalité du traitement</h2>
         <p className="text-club-gray leading-relaxed">
-          Ces données sont collectées uniquement pour répondre à votre demande de contact ou d'inscription au club. Elles ne sont pas utilisées à des fins commerciales ou publicitaires.
+          Ces données sont collectées uniquement pour répondre à votre demande de contact ou d&apos;inscription au club. Elles ne sont pas utilisées à des fins commerciales ou publicitaires.
         </p>
       </section>
 
       <section className="mb-8">
         <h2 className="font-serif text-xl font-bold text-club-dark mb-3">Base légale</h2>
         <p className="text-club-gray leading-relaxed">
-          Le traitement repose sur votre consentement (article 6.1.a du RGPD), exprimé lors de l'envoi du formulaire.
+          Le traitement repose sur votre consentement (article 6.1.a du RGPD), exprimé lors de l&apos;envoi du formulaire.
         </p>
       </section>
 
       <section className="mb-8">
         <h2 className="font-serif text-xl font-bold text-club-dark mb-3">Destinataires des données</h2>
         <p className="text-club-gray leading-relaxed">
-          Les messages sont transmis par email au responsable du club via le service <strong className="text-club-dark">Resend</strong> (resend.com). Aucune donnée n'est revendue ou transmise à des tiers à des fins commerciales.
+          Les messages sont transmis par email au responsable du club via le service <strong className="text-club-dark">Resend</strong> (resend.com). Aucune donnée n&apos;est revendue ou transmise à des tiers à des fins commerciales.
         </p>
       </section>
 
@@ -67,11 +67,11 @@ export default function PolitiqueConfidentialitePage() {
           Conformément au RGPD, vous disposez des droits suivants sur vos données :
         </p>
         <ul className="list-disc list-inside text-club-gray space-y-1 pl-2">
-          <li>Droit d'accès</li>
+          <li>Droit d&apos;accès</li>
           <li>Droit de rectification</li>
-          <li>Droit à l'effacement</li>
+          <li>Droit à l&apos;effacement</li>
           <li>Droit à la limitation du traitement</li>
-          <li>Droit d'opposition</li>
+          <li>Droit d&apos;opposition</li>
         </ul>
         <p className="text-club-gray leading-relaxed mt-3">
           Pour exercer ces droits, contactez-nous à :{' '}
@@ -84,7 +84,7 @@ export default function PolitiqueConfidentialitePage() {
         <p className="text-club-gray leading-relaxed">
           Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de la{' '}
           <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-club-gold hover:underline">CNIL</a>{' '}
-          (Commission Nationale de l'Informatique et des Libertés).
+          (Commission Nationale de l&apos;Informatique et des Libertés).
         </p>
       </section>
     </div>
