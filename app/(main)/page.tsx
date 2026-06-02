@@ -10,10 +10,29 @@ import type { Horaire, Article } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+
 export const metadata: Metadata = {
-  title: 'Accueil — Club d\'échecs aux Epesses, Vendée',
+  title: 'Club d\'échecs aux Epesses, Vendée — Cercle d\'Échecs Spicéen',
   description:
-    'Bienvenue au Cercle d\'Échecs Spicéen, club d\'échecs affilié FFE aux Epesses (Vendée). Rejoignez-nous chaque lundi et mercredi à 18h15.',
+    'Bienvenue au Cercle d\'Échecs Spicéen, club d\'échecs affilié FFE aux Epesses (Vendée, 85590). Séances tous niveaux chaque lundi et mercredi à 18h15. Première séance offerte, dès 8 ans.',
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    title: 'Cercle d\'Échecs Spicéen — Club d\'échecs aux Epesses, Vendée',
+    description:
+      'Club d\'échecs affilié FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 8 ans. Première séance offerte.',
+    url: siteUrl,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Cercle d\'Échecs Spicéen — Club d\'échecs aux Epesses, Vendée',
+      },
+    ],
+  },
 }
 
 const reasons = [

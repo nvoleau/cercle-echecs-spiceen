@@ -8,10 +8,29 @@ import { isFutureEvent } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+
 export const metadata: Metadata = {
-  title: 'Événements',
+  title: 'Événements & Agenda',
   description:
-    'Retrouvez tous les événements à venir du Cercle d\'Échecs Spicéen : tournois, blitz, cours et stages.',
+    'Agenda du Cercle d\'Échecs Spicéen : tournois, soirées blitz, cours et stages à Les Epesses (Vendée). Consultez tous les événements échecs en Vendée.',
+  alternates: {
+    canonical: `${siteUrl}/evenements`,
+  },
+  openGraph: {
+    title: 'Événements & Agenda — Cercle d\'Échecs Spicéen',
+    description:
+      'Tournois, blitz, cours et stages à Les Epesses (Vendée). Retrouvez tout l\'agenda du club d\'échecs.',
+    url: `${siteUrl}/evenements`,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Événements du Cercle d\'Échecs Spicéen',
+      },
+    ],
+  },
 }
 
 export default async function EvenementsPage() {
@@ -32,8 +51,39 @@ export default async function EvenementsPage() {
   const futurs = all.filter((e) => isFutureEvent(e.date))
   const passes = all.filter((e) => !isFutureEvent(e.date))
 
+  const eventsJsonLd = futurs.map((event) => ({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: event.titre,
+    description: event.description,
+    startDate: `${event.date}T${event.heure}`,
+    location: {
+      '@type': 'Place',
+      name: event.lieu,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Les Epesses',
+        postalCode: '85590',
+        addressCountry: 'FR',
+      },
+    },
+    organizer: {
+      '@type': 'SportsClub',
+      name: 'Cercle d\'Échecs Spicéen',
+      url: siteUrl,
+    },
+    ...(event.tarif ? { offers: { '@type': 'Offer', price: event.tarif, priceCurrency: 'EUR' } } : {}),
+    ...(event.lienInscription ? { url: event.lienInscription } : {}),
+  }))
+
   return (
     <div className="py-16">
+      {eventsJsonLd.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventsJsonLd) }}
+        />
+      )}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <SectionHeader

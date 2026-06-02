@@ -6,9 +6,29 @@ import type { Article } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+
 export const metadata: Metadata = {
-  title: 'Blog',
-  description: 'Actualités et articles du Cercle d\'Échecs Spicéen.',
+  title: 'Blog & Actualités',
+  description:
+    'Actualités, résultats de tournois, conseils et vie du club du Cercle d\'Échecs Spicéen aux Epesses (Vendée). Suivez toute l\'actualité échecs en Vendée.',
+  alternates: {
+    canonical: `${siteUrl}/blog`,
+  },
+  openGraph: {
+    title: 'Blog & Actualités — Cercle d\'Échecs Spicéen',
+    description:
+      'Actualités, résultats de tournois et vie du club du Cercle d\'Échecs Spicéen aux Epesses (Vendée).',
+    url: `${siteUrl}/blog`,
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Blog du Cercle d\'Échecs Spicéen',
+      },
+    ],
+  },
 }
 
 export default async function BlogPage() {

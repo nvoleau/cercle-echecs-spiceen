@@ -11,13 +11,48 @@ export const dynamic = 'force-dynamic'
 
 type Props = { params: Promise<{ slug: string }> }
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const article = await reader.collections.articles.read(slug)
   if (!article) return {}
+
+  const ogImage = article.image_couverture
+    ? {
+        url: article.image_couverture,
+        width: 1200,
+        height: 630,
+        alt: article.titre,
+      }
+    : {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: article.titre,
+      }
+
   return {
     title: article.titre,
     description: article.resume ?? undefined,
+    alternates: {
+      canonical: `${siteUrl}/blog/${slug}`,
+    },
+    openGraph: {
+      title: article.titre,
+      description: article.resume ?? undefined,
+      url: `${siteUrl}/blog/${slug}`,
+      type: 'article',
+      publishedTime: article.date ?? undefined,
+      authors: ['Cercle d\'Échecs Spicéen'],
+      images: [ogImage],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: article.titre,
+      description: article.resume ?? undefined,
+      images: [ogImage.url],
+    },
   }
 }
 
@@ -36,8 +71,39 @@ export default async function ArticlePage({ params }: Props) {
 
   const contenu = await article.contenu()
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.titre,
+    description: article.resume ?? undefined,
+    datePublished: article.date ?? undefined,
+    dateModified: article.date ?? undefined,
+    author: {
+      '@type': 'Organization',
+      name: 'Cercle d\'Échecs Spicéen',
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Cercle d\'Échecs Spicéen',
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/logo.png`,
+      },
+    },
+    url: `${siteUrl}/blog/${slug}`,
+    ...(article.image_couverture
+      ? { image: { '@type': 'ImageObject', url: article.image_couverture } }
+      : {}),
+  }
+
   return (
     <article className="min-h-screen bg-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Image de couverture */}
       {article.image_couverture && (
         <div className="relative w-full aspect-[21/9] bg-club-dark overflow-hidden">
