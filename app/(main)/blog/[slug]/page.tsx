@@ -1,3 +1,4 @@
+import type React from 'react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
@@ -96,23 +97,26 @@ export default async function ArticlePage({ params }: Props) {
                     4: 'text-lg mt-4 mb-2',
                   }
                   const cls = `font-serif font-bold text-club-dark ${sizes[level] ?? 'text-base mt-4 mb-2'}`
-                  if (level === 2) return <h2 style={{ textAlign }} className={cls}>{children}</h2>
-                  if (level === 3) return <h3 style={{ textAlign }} className={cls}>{children}</h3>
-                  if (level === 4) return <h4 style={{ textAlign }} className={cls}>{children}</h4>
-                  return <h1 style={{ textAlign }} className={cls}>{children}</h1>
+                  const c = children as React.ReactNode
+                  if (level === 2) return <h2 style={{ textAlign }} className={cls}>{c}</h2>
+                  if (level === 3) return <h3 style={{ textAlign }} className={cls}>{c}</h3>
+                  if (level === 4) return <h4 style={{ textAlign }} className={cls}>{c}</h4>
+                  return <h1 style={{ textAlign }} className={cls}>{c}</h1>
                 },
                 paragraph: ({ children, textAlign }) => (
                   <p style={{ textAlign }} className="text-club-gray leading-relaxed mb-5 text-base">
-                    {children}
+                    {children as React.ReactNode}
                   </p>
                 ),
                 divider: () => <hr className="border-gray-200 my-8" />,
-                list: ({ type, children }) =>
-                  type === 'ordered' ? (
-                    <ol className="list-decimal list-inside text-club-gray mb-5 space-y-1 pl-2">{children}</ol>
+                list: ({ type, children }) => {
+                  const c = children as React.ReactNode
+                  return type === 'ordered' ? (
+                    <ol className="list-decimal list-inside text-club-gray mb-5 space-y-1 pl-2">{c}</ol>
                   ) : (
-                    <ul className="list-disc list-inside text-club-gray mb-5 space-y-1 pl-2">{children}</ul>
-                  ),
+                    <ul className="list-disc list-inside text-club-gray mb-5 space-y-1 pl-2">{c}</ul>
+                  )
+                },
                 image: ({ src, alt }) => (
                   <figure className="my-8">
                     <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden bg-club-card">
@@ -127,17 +131,17 @@ export default async function ArticlePage({ params }: Props) {
                 ),
                 blockquote: ({ children }) => (
                   <blockquote className="border-l-4 border-club-gold pl-5 my-6 text-club-gray italic">
-                    {children}
+                    {children as React.ReactNode}
                   </blockquote>
                 ),
               },
               inline: {
-                bold: ({ children }) => <strong className="font-semibold text-club-dark">{children}</strong>,
-                italic: ({ children }) => <em>{children}</em>,
-                underline: ({ children }) => <u>{children}</u>,
+                bold: ({ children }) => <strong className="font-semibold text-club-dark">{children as React.ReactNode}</strong>,
+                italic: ({ children }) => <em>{children as React.ReactNode}</em>,
+                underline: ({ children }) => <u>{children as React.ReactNode}</u>,
                 link: ({ href, children }) => (
                   <a href={href} className="text-club-gold underline hover:text-amber-600 transition-colors" target="_blank" rel="noopener noreferrer">
-                    {children}
+                    {children as React.ReactNode}
                   </a>
                 ),
               },
