@@ -140,6 +140,7 @@ export default async function HomePage() {
                 src="/club.jpg"
                 alt="Séance au Cercle d'Échecs Spicéen"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>

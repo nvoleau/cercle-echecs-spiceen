@@ -32,6 +32,7 @@ export default function Navbar() {
               alt="Logo Cercle d'Échecs Spicéen"
               width={52}
               height={52}
+              priority
               className="w-[52px] h-[52px] rounded-full ring-2 ring-club-gold/40"
             />
             <span className="text-white font-serif font-bold text-xl leading-tight">
