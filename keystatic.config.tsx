@@ -85,8 +85,8 @@ export default config({
         }),
         heure: fields.text({
           label: 'Heure',
-          description: 'Ex: 18h15',
-          validation: { isRequired: true, length: { min: 2, max: 10 } },
+          description: 'Ex: 18h15 ou 14h00 – 18h00',
+          validation: { isRequired: true, length: { min: 2, max: 20 } },
         }),
         type: fields.select({
           label: 'Type d\'événement',
