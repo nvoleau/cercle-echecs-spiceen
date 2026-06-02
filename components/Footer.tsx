@@ -86,7 +86,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3 text-sm">
               <li className="flex items-start gap-2">
                 <MapPin size={16} className="text-club-gold mt-0.5 shrink-0" />
-                <span>Salle de la Colonne<br />Les Epesses, 85420</span>
+                <span>Salle de la Colonne<br />Les Epesses, 85590</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone size={16} className="text-club-gold shrink-0" />
@@ -109,7 +109,11 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs text-gray-500">
           <p>© {year} Cercle d&apos;Échecs Spicéen. Tous droits réservés.</p>
-          <p>Affilié à la <a href="https://www.echecs.asso.fr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">Fédération Française des Échecs</a></p>
+          <div className="flex items-center gap-4">
+            <Link href="/mentions-legales" className="hover:text-gray-300 transition-colors">Mentions légales</Link>
+            <Link href="/politique-confidentialite" className="hover:text-gray-300 transition-colors">Confidentialité</Link>
+            <a href="https://www.echecs.asso.fr" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300">FFE</a>
+          </div>
         </div>
       </div>
     </footer>

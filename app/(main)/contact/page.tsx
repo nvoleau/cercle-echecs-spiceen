@@ -129,7 +129,7 @@ export default async function ContactPage() {
                   <MapPin size={18} className="text-club-gold mt-0.5 shrink-0" />
                   <div>
                     <p className="font-medium text-club-dark">Salle de la Colonne</p>
-                    <p className="text-sm">Les Epesses, 85420</p>
+                    <p className="text-sm">Les Epesses, 85590</p>
                   </div>
                 </li>
                 <li className="flex items-center gap-2 text-club-gray text-sm">
@@ -152,7 +152,7 @@ export default async function ContactPage() {
               <div className="w-full h-52 rounded-xl overflow-hidden border border-gray-200">
                 <iframe
                   title="Localisation de la Salle de la Colonne, Les Epesses"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2722.5!2d-1.0!3d46.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4804e5a7b2e91adb%3A0x0!2sSalle+de+la+Colonne%2C+Les+Epesses%2C+85420!5e0!3m2!1sfr!2sfr!4v1000000000000"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2722.5!2d-1.0!3d46.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4804e5a7b2e91adb%3A0x0!2sSalle+de+la+Colonne%2C+Les+Epesses%2C+85590!5e0!3m2!1sfr!2sfr!4v1000000000000"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}

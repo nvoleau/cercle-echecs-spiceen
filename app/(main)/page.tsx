@@ -142,7 +142,7 @@ export default async function HomePage() {
                 {[
                   'Affilié à la Fédération Française des Échecs (FFE)',
                   'Plus de 15 licenciés, des débutants aux classés',
-                  'Salle de la Colonne, Les Epesses (85420)',
+                  'Salle de la Colonne, Les Epesses (85590)',
                 ].map((text) => (
                   <div key={text} className="flex items-center gap-3 text-club-gray text-sm">
                     <span className="w-2 h-2 rounded-full bg-club-gold shrink-0" />
