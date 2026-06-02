@@ -102,7 +102,7 @@ export default function Navbar() {
               href="/contact"
               className="ml-3 px-4 py-2 bg-club-gold text-white text-sm font-semibold rounded hover:bg-amber-600 transition-colors"
             >
-              Nous rejoindre
+              Nous contacter
             </Link>
           </div>
 
@@ -174,7 +174,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className="mt-2 px-3 py-3 bg-club-gold text-white text-sm font-semibold rounded text-center hover:bg-amber-600 transition-colors"
             >
-              Nous rejoindre
+              Nous contacter
             </Link>
           </div>
         </div>

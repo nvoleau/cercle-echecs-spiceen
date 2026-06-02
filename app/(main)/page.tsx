@@ -119,7 +119,7 @@ export default async function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="px-8 py-4 bg-club-gold text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-base">
-              Nous rejoindre
+              Nous contacter
             </Link>
             <Link href="/evenements" className="px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-club-dark transition-colors text-base">
               Voir nos événements
@@ -249,7 +249,7 @@ export default async function HomePage() {
           <p className="text-amber-100 mb-8">Venez nous rencontrer lors d&apos;une séance — la première est offerte, sans inscription préalable.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="px-8 py-3 bg-white text-club-gold font-semibold rounded-lg hover:bg-amber-50 transition-colors">
-              Nous rejoindre
+              Nous contacter
             </Link>
             <Link href="/evenements" className="px-8 py-3 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-amber-600 transition-colors">
               Voir les événements

@@ -2,7 +2,7 @@
 
 ## Présentation du club
 
-Club d'échecs affilié à la Fédération Française des Échecs (FFE), basé à la **Salle de la Colonne, Les Epesses (85420, Vendée)**. Moins de 30 licenciés, tous niveaux, dès 8 ans. Séances chaque **lundi et mercredi à 18h15**. Première séance offerte, sans inscription préalable.
+Club d'échecs affilié à la Fédération Française des Échecs (FFE), basé à la **Salle de la Colonne, Les Epesses (85590, Vendée)**. Moins de 30 licenciés, tous niveaux, dès 8 ans. Séances chaque **lundi et mercredi à 18h15**. Première séance offerte, sans inscription préalable.
 
 ## Stack technique
 
