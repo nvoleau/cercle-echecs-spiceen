@@ -64,10 +64,11 @@ export default async function EvenementsPage() {
 
         {passes.length > 0 && (
           <section className="mt-16">
-            <h2 className="font-serif text-2xl font-bold text-club-gray mb-6">Événements passés</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-70">
+            <h2 className="font-serif text-2xl font-bold text-club-gray mb-2">Événements passés</h2>
+            <p className="text-club-gray text-sm mb-6">Retrouvez l&apos;historique de nos tournois et animations.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 opacity-75">
               {passes.map((event) => (
-                <EventCard key={event.id} event={event} />
+                <EventCard key={event.id} event={event} past />
               ))}
             </div>
           </section>

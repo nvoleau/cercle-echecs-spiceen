@@ -5,6 +5,7 @@ import { formatDate, eventTypeLabel, eventTypeBadgeClass } from '@/lib/utils'
 
 interface EventCardProps {
   event: Evenement
+  past?: boolean
 }
 
 function EventIcon({ type }: { type: Evenement['type'] }) {
@@ -18,9 +19,9 @@ function EventIcon({ type }: { type: Evenement['type'] }) {
   return <Icon size={16} />
 }
 
-export default function EventCard({ event }: EventCardProps) {
+export default function EventCard({ event, past = false }: EventCardProps) {
   return (
-    <article className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow flex flex-col overflow-hidden">
+    <article className={`bg-white rounded-xl border shadow-sm flex flex-col overflow-hidden ${past ? 'border-gray-200 grayscale-[30%]' : 'border-gray-200 hover:shadow-md transition-shadow'}`}>
       {event.affiche && (
         <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-50">
           <Image
@@ -35,15 +36,22 @@ export default function EventCard({ event }: EventCardProps) {
 
       <div className="p-6 flex flex-col gap-4 flex-1">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="font-serif text-xl font-bold text-club-dark leading-tight">
+          <h3 className={`font-serif text-xl font-bold leading-tight ${past ? 'text-club-gray' : 'text-club-dark'}`}>
             {event.titre}
           </h3>
-          <span
-            className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold shrink-0 ${eventTypeBadgeClass(event.type)}`}
-          >
-            <EventIcon type={event.type} />
-            {eventTypeLabel(event.type)}
-          </span>
+          <div className="flex flex-col items-end gap-1.5 shrink-0">
+            {past && (
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-gray-100 text-gray-500">
+                Terminé
+              </span>
+            )}
+            <span
+              className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${past ? 'bg-gray-200 text-gray-500' : eventTypeBadgeClass(event.type)}`}
+            >
+              <EventIcon type={event.type} />
+              {eventTypeLabel(event.type)}
+            </span>
+          </div>
         </div>
 
         <p className="text-club-gray text-sm leading-relaxed">{event.description}</p>
@@ -69,7 +77,7 @@ export default function EventCard({ event }: EventCardProps) {
           )}
         </div>
 
-        {event.lienInscription && (
+        {event.lienInscription && !past && (
           <a
             href={event.lienInscription}
             target="_blank"

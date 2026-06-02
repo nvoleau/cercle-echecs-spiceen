@@ -50,9 +50,9 @@ export default function ContactForm() {
     return (
       <div className="flex flex-col items-center gap-4 py-10 text-center">
         <CheckCircle size={48} className="text-green-500" />
-        <h3 className="font-serif text-xl font-bold text-club-dark">Message envoyé !</h3>
-        <p className="text-club-gray">
-          Nous vous répondrons dans les plus brefs délais.
+        <h3 className="font-serif text-xl font-bold text-club-dark">Message bien reçu !</h3>
+        <p className="text-club-gray max-w-xs">
+          Merci de nous avoir contactés. Nous vous répondrons dans les meilleurs délais — généralement sous 48&nbsp;h.
         </p>
         <button
           onClick={() => setStatus('idle')}
@@ -111,7 +111,7 @@ export default function ContactForm() {
           rows={5}
           value={form.message}
           onChange={handleChange}
-          placeholder="Votre message..."
+          placeholder="Bonjour, je voudrais en savoir plus sur le club…"
           className="w-full px-4 py-3 border border-gray-300 rounded-lg text-club-dark focus:outline-none focus:ring-2 focus:ring-club-gold focus:border-transparent transition resize-none"
         />
       </div>

@@ -35,7 +35,7 @@ const reasons = [
   {
     icon: School,
     title: 'Ouverture scolaire',
-    text: 'Le club accueille les jeunes dès 5 ans et collabore avec les établissements locaux pour initier les enfants.',
+    text: 'Le club accueille les jeunes dès 8 ans et collabore avec les établissements locaux pour initier les enfants aux échecs.',
   },
 ]
 
@@ -100,7 +100,7 @@ export default async function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="px-8 py-4 bg-club-gold text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-base">
-              Nous contacter
+              Nous rejoindre
             </Link>
             <Link href="/evenements" className="px-8 py-4 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-white hover:text-club-dark transition-colors text-base">
               Voir nos événements
@@ -123,7 +123,7 @@ export default async function HomePage() {
                 {[
                   'Affilié à la Fédération Française des Échecs (FFE)',
                   'Plus de 15 licenciés, des débutants aux classés',
-                  'Salle de la Colonne, Les Epesses (85590)',
+                  'Salle de la Colonne, Les Epesses (85420)',
                 ].map((text) => (
                   <div key={text} className="flex items-center gap-3 text-club-gray text-sm">
                     <span className="w-2 h-2 rounded-full bg-club-gold shrink-0" />
@@ -227,10 +227,10 @@ export default async function HomePage() {
       <section className="bg-club-gold py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="font-serif text-3xl font-bold text-white mb-4">Prêt à déplacer vos pièces ?</h2>
-          <p className="text-amber-100 mb-8">Venez nous rencontrer lors d&apos;une séance ou contactez-nous pour plus d&apos;informations.</p>
+          <p className="text-amber-100 mb-8">Venez nous rencontrer lors d&apos;une séance — la première est offerte, sans inscription préalable.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact" className="px-8 py-3 bg-white text-club-gold font-semibold rounded-lg hover:bg-amber-50 transition-colors">
-              Nous contacter
+              Nous rejoindre
             </Link>
             <Link href="/evenements" className="px-8 py-3 bg-transparent text-white font-semibold rounded-lg border-2 border-white hover:bg-amber-600 transition-colors">
               Voir les événements

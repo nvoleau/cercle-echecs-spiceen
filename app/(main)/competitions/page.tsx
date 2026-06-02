@@ -93,7 +93,7 @@ export default async function CompetitionsPage() {
               ) : (
                 <div className="flex items-center gap-3 px-6 py-8 text-club-gray">
                   <TrendingUp size={20} className="text-gray-300" />
-                  <p>Les résultats seront disponibles au fil de la saison.</p>
+                  <p>Les résultats seront publiés au fur et à mesure des rondes.</p>
                 </div>
               )}
             </section>

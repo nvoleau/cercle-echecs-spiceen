@@ -11,12 +11,18 @@ export default function NotFound() {
     <div className="min-h-[70vh] flex items-center justify-center bg-club-dark">
       <div className="text-center px-4 py-16">
         <div className="flex justify-center mb-6">
-          <Image src="/logo.svg" alt="CES" width={80} height={80} className="opacity-60" />
+          <Image
+            src="/logo.png"
+            alt="Logo Cercle d'Échecs Spicéen"
+            width={80}
+            height={80}
+            className="rounded-full opacity-70 ring-2 ring-club-gold/40"
+          />
         </div>
         <p className="text-club-gold text-xs font-semibold tracking-[0.3em] uppercase mb-3">Erreur 404</p>
         <h1 className="font-serif text-5xl md:text-7xl font-bold text-white mb-4">Échec &amp; mat</h1>
         <p className="text-gray-400 text-lg mb-10 max-w-md mx-auto">
-          La page que vous cherchez n&apos;existe pas. Peut-être a-t-elle été déplacée ou supprimée.
+          Cette page n&apos;existe pas ou a été déplacée. Pas de panique — l&apos;accueil est à portée d&apos;un clic.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
