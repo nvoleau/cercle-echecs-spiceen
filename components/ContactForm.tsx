@@ -117,8 +117,8 @@ export default function ContactForm() {
       </div>
 
       {status === 'error' && (
-        <div className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm">
-          <AlertCircle size={16} className="shrink-0" />
+        <div role="alert" className="flex items-center gap-2 text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 text-sm">
+          <AlertCircle size={16} className="shrink-0" aria-hidden="true" />
           <span>{errorMessage}</span>
         </div>
       )}
@@ -130,7 +130,7 @@ export default function ContactForm() {
       >
         {status === 'loading' ? (
           <>
-            <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24" aria-hidden="true">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
             </svg>
@@ -138,7 +138,7 @@ export default function ContactForm() {
           </>
         ) : (
           <>
-            <Send size={16} />
+            <Send size={16} aria-hidden="true" />
             Envoyer le message
           </>
         )}

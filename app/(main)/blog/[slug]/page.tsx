@@ -57,12 +57,12 @@ export default async function ArticlePage({ params }: Props) {
           href="/blog"
           className="inline-flex items-center gap-2 text-club-gray text-sm hover:text-club-gold transition-colors mb-8"
         >
-          <ArrowLeft size={14} /> Retour au blog
+          <ArrowLeft size={14} aria-hidden="true" /> Retour au blog
         </Link>
 
         {/* Méta */}
         <div className="flex items-center gap-2 text-club-gray text-sm mb-4">
-          <CalendarDays size={14} />
+          <CalendarDays size={14} aria-hidden="true" />
           {article.date && (
             <time dateTime={article.date}>{formatDate(article.date)}</time>
           )}

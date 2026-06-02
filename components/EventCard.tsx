@@ -85,7 +85,7 @@ export default function EventCard({ event, past = false }: EventCardProps) {
             className="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-club-gold text-white rounded-lg text-sm font-semibold hover:bg-amber-700 transition-colors"
           >
             S&apos;inscrire
-            <ExternalLink size={14} />
+            <ExternalLink size={14} aria-hidden="true" />
           </a>
         )}
       </div>

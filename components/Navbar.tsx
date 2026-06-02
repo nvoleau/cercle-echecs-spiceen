@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -17,6 +17,19 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
+  const hamburgerRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    if (!open) return
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setOpen(false)
+        hamburgerRef.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [open])
 
   return (
     <nav className="bg-club-dark sticky top-0 z-50 border-b border-white/10">
@@ -96,19 +109,21 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
+            ref={hamburgerRef}
             className="md:hidden text-gray-300 hover:text-white p-2"
             onClick={() => setOpen(!open)}
             aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
             aria-expanded={open}
+            aria-controls="mobile-menu"
           >
-            {open ? <X size={24} /> : <Menu size={24} />}
+            {open ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
           </button>
         </div>
       </div>
 
       {/* Mobile overlay */}
       {open && (
-        <div className="md:hidden bg-club-dark border-t border-white/10">
+        <div id="mobile-menu" className="md:hidden bg-club-dark border-t border-white/10">
           <div className="px-4 py-3 flex flex-col gap-1">
             {links.map((link) => {
               const active = pathname === link.href

@@ -4,6 +4,7 @@ interface SectionHeaderProps {
   subtitle?: string
   light?: boolean
   centered?: boolean
+  as?: 'h1' | 'h2' | 'h3'
 }
 
 export default function SectionHeader({
@@ -12,19 +13,20 @@ export default function SectionHeader({
   subtitle,
   light = false,
   centered = false,
+  as: Heading = 'h2',
 }: SectionHeaderProps) {
   return (
     <div className={centered ? 'text-center' : ''}>
       <p className="text-club-gold text-xs font-semibold tracking-[0.2em] uppercase mb-2">
         {label}
       </p>
-      <h2
+      <Heading
         className={`font-serif text-3xl md:text-4xl font-bold mb-4 ${
           light ? 'text-white' : 'text-club-dark'
         }`}
       >
         {title}
-      </h2>
+      </Heading>
       {subtitle && (
         <p
           className={`text-base max-w-2xl ${centered ? 'mx-auto' : ''} ${

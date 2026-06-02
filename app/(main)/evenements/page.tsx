@@ -40,6 +40,7 @@ export default async function EvenementsPage() {
             label="Agenda"
             title="Nos événements"
             subtitle="Tournois, soirées blitz, cours et stages — retrouvez tout l'agenda du club."
+            as="h1"
           />
         </div>
 
