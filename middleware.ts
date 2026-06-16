@@ -26,7 +26,7 @@ export async function middleware(request: NextRequest) {
   if (!secret || !password) return NextResponse.next()
 
   const cookieToken = request.cookies.get(AUTH_COOKIE)?.value
-  const expectedToken = await computeToken(secret, password)
+  const expectedToken = await computeToken(secret.trim(), password.trim())
 
   if (cookieToken !== expectedToken) {
     const loginUrl = new URL('/keystatic-login', request.url)

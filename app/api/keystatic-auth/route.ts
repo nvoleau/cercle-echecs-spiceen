@@ -25,11 +25,14 @@ export async function POST(request: Request) {
   }
 
   const body = await request.json()
-  if (body.password !== correctPassword) {
+  const enteredPassword = (body.password ?? '').trim()
+  const expectedPassword = correctPassword.trim()
+
+  if (enteredPassword !== expectedPassword) {
     return NextResponse.json({ error: 'Invalid password' }, { status: 401 })
   }
 
-  const token = await computeToken(secret, correctPassword)
+  const token = await computeToken(secret.trim(), expectedPassword)
   const cookieStore = await cookies()
   cookieStore.set('ks_session', token, {
     httpOnly: true,
