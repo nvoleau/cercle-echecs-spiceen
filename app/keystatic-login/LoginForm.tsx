@@ -10,7 +10,7 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
-  const next = searchParams.get('next') || '/keystatic'
+  const next = searchParams.get('next') || '/admin'
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -25,6 +25,9 @@ export default function LoginForm() {
 
     if (res.ok) {
       router.push(next)
+    } else if (res.status === 500) {
+      setError('Configuration manquante : vérifiez que KEYSTATIC_SECRET et KEYSTATIC_PASSWORD sont définis dans les variables d\'environnement Vercel.')
+      setLoading(false)
     } else {
       setError('Mot de passe incorrect.')
       setLoading(false)
