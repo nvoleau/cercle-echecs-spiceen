@@ -31,8 +31,14 @@ export default function EvenementForm({ evenement }: { evenement?: EvenementData
       form.append('file', file)
       form.append('folder', 'evenements')
       const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
-      const { url } = await res.json()
-      setAffiche(url)
+      const json = await res.json()
+      if (!res.ok || !json.url) {
+        alert(`Erreur upload : ${json.error ?? 'Réponse inattendue'}`)
+        return
+      }
+      setAffiche(json.url)
+    } catch {
+      alert('Erreur réseau lors de l\'upload.')
     } finally {
       setAfficheUploading(false)
     }

@@ -17,8 +17,8 @@ async function computeToken(secret: string, password: string): Promise<string> {
 }
 
 export async function requireAdmin(redirectTo = '/admin') {
-  const secret = process.env.KEYSTATIC_SECRET
-  const password = process.env.KEYSTATIC_PASSWORD
+  const secret = process.env.KEYSTATIC_SECRET?.trim()
+  const password = process.env.KEYSTATIC_PASSWORD?.trim()
   if (!secret || !password) return // dev sans env vars → accès libre
 
   const cookieStore = await cookies()
@@ -30,8 +30,8 @@ export async function requireAdmin(redirectTo = '/admin') {
 }
 
 export async function checkAdminRequest(request: Request): Promise<boolean> {
-  const secret = process.env.KEYSTATIC_SECRET
-  const password = process.env.KEYSTATIC_PASSWORD
+  const secret = process.env.KEYSTATIC_SECRET?.trim()
+  const password = process.env.KEYSTATIC_PASSWORD?.trim()
   if (!secret || !password) return true
 
   const cookieHeader = request.headers.get('cookie') ?? ''

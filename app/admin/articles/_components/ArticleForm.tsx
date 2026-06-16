@@ -36,8 +36,14 @@ export default function ArticleForm({ article, initialContent = '' }: Props) {
       form.append('file', file)
       form.append('folder', 'articles/couvertures')
       const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
-      const { url } = await res.json()
-      setCoverUrl(url)
+      const json = await res.json()
+      if (!res.ok || !json.url) {
+        alert(`Erreur upload : ${json.error ?? 'Réponse inattendue'}`)
+        return
+      }
+      setCoverUrl(json.url)
+    } catch {
+      alert('Erreur réseau lors de l\'upload.')
     } finally {
       setCoverUploading(false)
     }

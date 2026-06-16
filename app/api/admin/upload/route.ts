@@ -15,9 +15,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Aucun fichier reçu' }, { status: 400 })
   }
 
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return NextResponse.json(
+      { error: 'Vercel Blob non configuré — créez un Blob Store dans le dashboard Vercel et connectez-le au projet.' },
+      { status: 503 }
+    )
+  }
+
   const ext = file.name.split('.').pop()
   const name = `${folder}/${Date.now()}.${ext}`
 
-  const blob = await put(name, file, { access: 'public' })
-  return NextResponse.json({ url: blob.url })
+  try {
+    const blob = await put(name, file, { access: 'public' })
+    return NextResponse.json({ url: blob.url })
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Erreur inconnue'
+    return NextResponse.json({ error: `Upload échoué : ${message}` }, { status: 500 })
+  }
 }

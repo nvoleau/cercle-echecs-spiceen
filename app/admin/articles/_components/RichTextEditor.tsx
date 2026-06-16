@@ -47,8 +47,14 @@ export default function RichTextEditor({ content, onChange }: Props) {
         form.append('file', file)
         form.append('folder', 'articles')
         const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
-        const { url } = await res.json()
-        editor.chain().focus().setImage({ src: url, alt: file.name.replace(/\.[^.]+$/, '') }).run()
+        const json = await res.json()
+        if (!res.ok || !json.url) {
+          alert(`Erreur upload : ${json.error ?? 'Réponse inattendue'}`)
+          return
+        }
+        editor.chain().focus().setImage({ src: json.url, alt: file.name.replace(/\.[^.]+$/, '') }).run()
+      } catch {
+        alert('Erreur réseau lors de l\'upload.')
       } finally {
         setUploading(false)
       }
