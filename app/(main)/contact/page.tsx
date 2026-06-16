@@ -199,7 +199,7 @@ export default async function ContactPage() {
                 Rejoignez le club et réglez votre licence directement en ligne via HelloAsso.
               </p>
               <Link
-                href="https://www.helloasso.com"
+                href="https://www.helloasso.com/associations/cercle-d-echecs-spiceen"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-club-gold text-white font-semibold rounded-lg hover:bg-amber-600 transition-colors text-sm"
