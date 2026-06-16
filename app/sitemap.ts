@@ -1,18 +1,16 @@
 import type { MetadataRoute } from 'next'
-import reader from '@/lib/reader'
+import { getArticles } from '@/lib/queries'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const rawArticles = await reader.collections.articles.all()
-  const articleEntries: MetadataRoute.Sitemap = rawArticles
-    .filter((a) => a.entry.date)
-    .map((a) => ({
-      url: `${siteUrl}/blog/${a.slug}`,
-      lastModified: new Date(a.entry.date as string),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    }))
+  const articlesList = await getArticles()
+  const articleEntries: MetadataRoute.Sitemap = articlesList.map((a) => ({
+    url: `${siteUrl}/blog/${a.slug}`,
+    lastModified: new Date(a.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
 
   return [
     {

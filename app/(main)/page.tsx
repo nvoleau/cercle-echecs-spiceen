@@ -5,9 +5,7 @@ import { Users, GraduationCap, Trophy, School, ArrowRight, Gift } from 'lucide-r
 import SectionHeader from '@/components/SectionHeader'
 import ScheduleGrid from '@/components/ScheduleGrid'
 import ArticleCard from '@/components/ArticleCard'
-import reader from '@/lib/reader'
-import { getHoraires } from '@/lib/queries'
-import type { Article } from '@/lib/types'
+import { getHoraires, getArticles } from '@/lib/queries'
 
 export const dynamic = 'force-dynamic'
 
@@ -62,18 +60,7 @@ const reasons = [
 export default async function HomePage() {
   const horaires = await getHoraires()
 
-  const rawArticles = await reader.collections.articles.all()
-  const latestArticles: Article[] = rawArticles
-    .map((a) => ({
-      slug: a.slug,
-      titre: a.entry.titre,
-      date: a.entry.date ?? '',
-      resume: a.entry.resume ?? '',
-      image_couverture: a.entry.image_couverture ?? null,
-    }))
-    .filter((a) => a.date)
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 3)
+  const latestArticles = (await getArticles()).slice(0, 3)
 
   return (
     <>

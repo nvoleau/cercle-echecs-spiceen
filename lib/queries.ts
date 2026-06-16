@@ -1,7 +1,7 @@
-import { eq } from 'drizzle-orm'
+import { eq, desc } from 'drizzle-orm'
 import { db } from './db'
-import { horaires, evenements, tarifs, saisons, competitions, matchs } from './schema'
-import type { Horaire, Evenement, Resultats, Tarifs } from './types'
+import { horaires, evenements, tarifs, saisons, competitions, matchs, articles } from './schema'
+import type { Horaire, Evenement, Resultats, Tarifs, Article } from './types'
 
 export async function getHoraires(): Promise<Horaire[]> {
   return db.select().from(horaires)
@@ -33,6 +33,39 @@ export async function getTarifs(): Promise<Tarifs | null> {
     licence_ffe_incluse: rows[0].licence_ffe_incluse,
     note: rows[0].note,
   }
+}
+
+export async function getArticles(onlyPublished = true): Promise<Article[]> {
+  const rows = onlyPublished
+    ? await db.select().from(articles).where(eq(articles.publie, true)).orderBy(desc(articles.date))
+    : await db.select().from(articles).orderBy(desc(articles.date))
+  return rows.map((r) => ({
+    slug: r.slug,
+    titre: r.titre,
+    date: r.date,
+    resume: r.resume,
+    image_couverture: r.image_couverture ?? null,
+  }))
+}
+
+export async function getArticle(slug: string): Promise<(Article & { contenu: string; id: number; publie: boolean }) | null> {
+  const rows = await db.select().from(articles).where(eq(articles.slug, slug))
+  if (!rows[0]) return null
+  return {
+    id: rows[0].id,
+    slug: rows[0].slug,
+    titre: rows[0].titre,
+    date: rows[0].date,
+    resume: rows[0].resume,
+    image_couverture: rows[0].image_couverture ?? null,
+    contenu: rows[0].contenu,
+    publie: rows[0].publie,
+  }
+}
+
+export async function getArticleById(id: number) {
+  const rows = await db.select().from(articles).where(eq(articles.id, id))
+  return rows[0] ?? null
 }
 
 export async function getResultats(): Promise<Resultats | null> {

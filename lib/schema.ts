@@ -53,3 +53,14 @@ export const matchs = pgTable('matchs', {
   score_eux: integer('score_eux').notNull(),
   resultat: text('resultat').notNull(),
 })
+
+export const articles = pgTable('articles', {
+  id: serial('id').primaryKey(),
+  slug: text('slug').notNull().unique(),
+  titre: text('titre').notNull(),
+  date: text('date').notNull(),
+  resume: text('resume').notNull().default(''),
+  image_couverture: text('image_couverture'),
+  contenu: text('contenu').notNull().default(''),
+  publie: boolean('publie').notNull().default(true),
+})

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import SectionHeader from '@/components/SectionHeader'
 import ArticleCard from '@/components/ArticleCard'
-import reader from '@/lib/reader'
-import type { Article } from '@/lib/types'
+import { getArticles } from '@/lib/queries'
 
 export const dynamic = 'force-dynamic'
 
@@ -32,18 +31,7 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  const raw = await reader.collections.articles.all()
-
-  const articles: Article[] = raw
-    .map((a) => ({
-      slug: a.slug,
-      titre: a.entry.titre,
-      date: a.entry.date ?? '',
-      resume: a.entry.resume ?? '',
-      image_couverture: a.entry.image_couverture ?? null,
-    }))
-    .filter((a) => a.date)
-    .sort((a, b) => b.date.localeCompare(a.date))
+  const articles = await getArticles()
 
   return (
     <div className="min-h-screen bg-white">
