@@ -68,6 +68,11 @@ export async function getArticleById(id: number) {
   return rows[0] ?? null
 }
 
+export async function getEvenementById(id: string) {
+  const rows = await db.select().from(evenements).where(eq(evenements.id, id))
+  return rows[0] ?? null
+}
+
 export async function getResultats(): Promise<Resultats | null> {
   const saisonRows = await db.select().from(saisons).limit(1)
   if (!saisonRows[0]) return null
