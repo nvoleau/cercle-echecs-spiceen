@@ -2,8 +2,7 @@ import type { Metadata } from 'next'
 import { CalendarX } from 'lucide-react'
 import SectionHeader from '@/components/SectionHeader'
 import EventCard from '@/components/EventCard'
-import reader from '@/lib/reader'
-import type { Evenement } from '@/lib/types'
+import { getEvenements } from '@/lib/queries'
 import { isFutureEvent } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
@@ -34,19 +33,7 @@ export const metadata: Metadata = {
 }
 
 export default async function EvenementsPage() {
-  const rawEvents = await reader.collections.evenements.all()
-  const all: Evenement[] = rawEvents.map((e) => ({
-    id: e.slug,
-    titre: e.entry.titre as string,
-    date: e.entry.date ?? '',
-    heure: e.entry.heure,
-    type: e.entry.type as Evenement['type'],
-    description: e.entry.description,
-    lieu: e.entry.lieu,
-    tarif: e.entry.tarif ?? null,
-    lienInscription: e.entry.lienInscription ?? null,
-    affiche: e.entry.affiche ?? null,
-  }))
+  const all = await getEvenements()
 
   const futurs = all.filter((e) => isFutureEvent(e.date))
   const passes = all.filter((e) => !isFutureEvent(e.date))

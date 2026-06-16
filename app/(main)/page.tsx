@@ -6,7 +6,8 @@ import SectionHeader from '@/components/SectionHeader'
 import ScheduleGrid from '@/components/ScheduleGrid'
 import ArticleCard from '@/components/ArticleCard'
 import reader from '@/lib/reader'
-import type { Horaire, Article } from '@/lib/types'
+import { getHoraires } from '@/lib/queries'
+import type { Article } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
 
@@ -59,15 +60,7 @@ const reasons = [
 ]
 
 export default async function HomePage() {
-  const horairesData = await reader.singletons.horaires.read()
-  const horaires: Horaire[] = (horairesData?.seances ?? []).map((s) => ({
-    id: s.id,
-    jour: s.jour,
-    heure_debut: s.heure_debut,
-    heure_fin: s.heure_fin,
-    libelle: s.libelle ?? '',
-    lieu: s.lieu,
-  }))
+  const horaires = await getHoraires()
 
   const rawArticles = await reader.collections.articles.all()
   const latestArticles: Article[] = rawArticles

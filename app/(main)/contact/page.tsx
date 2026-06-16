@@ -4,8 +4,7 @@ import { MapPin, Clock, ExternalLink, Phone, Mail, Gift, Euro, CheckCircle } fro
 import SectionHeader from '@/components/SectionHeader'
 import ContactForm from '@/components/ContactForm'
 import ScheduleGrid from '@/components/ScheduleGrid'
-import reader from '@/lib/reader'
-import type { Horaire, Tarifs } from '@/lib/types'
+import { getHoraires, getTarifs } from '@/lib/queries'
 
 export const dynamic = 'force-dynamic'
 
@@ -35,26 +34,8 @@ export const metadata: Metadata = {
 }
 
 export default async function ContactPage() {
-  const horairesData = await reader.singletons.horaires.read()
-  const horaires: Horaire[] = (horairesData?.seances ?? []).map((s) => ({
-    id: s.id,
-    jour: s.jour,
-    heure_debut: s.heure_debut,
-    heure_fin: s.heure_fin,
-    libelle: s.libelle ?? '',
-    lieu: s.lieu,
-  }))
-
-  const tarifsData = await reader.singletons.tarifs.read()
-  const tarifs: Tarifs | null = tarifsData
-    ? {
-        saison: tarifsData.saison,
-        cotisation_adulte: tarifsData.cotisation_adulte ?? '—',
-        cotisation_enfant: tarifsData.cotisation_enfant ?? '—',
-        licence_ffe_incluse: tarifsData.licence_ffe_incluse ?? true,
-        note: tarifsData.note ?? '',
-      }
-    : null
+  const horaires = await getHoraires()
+  const tarifs = await getTarifs()
 
   const tarifAdulteConnu = tarifs?.cotisation_adulte && tarifs.cotisation_adulte !== '—'
   const tarifEnfantConnu = tarifs?.cotisation_enfant && tarifs.cotisation_enfant !== '—'
