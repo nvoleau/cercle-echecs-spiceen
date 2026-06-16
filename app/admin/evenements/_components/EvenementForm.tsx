@@ -20,7 +20,23 @@ export default function EvenementForm({ evenement }: { evenement?: EvenementData
   const router = useRouter()
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState('')
+  const [affiche, setAffiche] = useState(evenement?.affiche ?? '')
+  const [afficheUploading, setAfficheUploading] = useState(false)
   const isEdit = !!evenement
+
+  async function uploadAffiche(file: File) {
+    setAfficheUploading(true)
+    try {
+      const form = new FormData()
+      form.append('file', file)
+      form.append('folder', 'evenements')
+      const res = await fetch('/api/admin/upload', { method: 'POST', body: form })
+      const { url } = await res.json()
+      setAffiche(url)
+    } finally {
+      setAfficheUploading(false)
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -36,7 +52,7 @@ export default function EvenementForm({ evenement }: { evenement?: EvenementData
       lieu: g('lieu'),
       tarif: g('tarif') || null,
       lien_inscription: g('lien_inscription') || null,
-      affiche: g('affiche') || null,
+      affiche: affiche || null,
     }
 
     startTransition(async () => {
@@ -114,8 +130,29 @@ export default function EvenementForm({ evenement }: { evenement?: EvenementData
           <input id="tarif" name="tarif" type="text" placeholder="8 €" defaultValue={evenement?.tarif ?? ''} className={inputCls} />
         </div>
         <div>
-          <label htmlFor="affiche" className={labelCls}>Affiche <span className="text-club-gray font-normal">(chemin /evenements/…)</span></label>
-          <input id="affiche" name="affiche" type="text" placeholder="/evenements/affiche.jpg" defaultValue={evenement?.affiche ?? ''} className={inputCls} />
+          <label className={labelCls}>Affiche <span className="text-club-gray font-normal">(optionnel)</span></label>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={affiche}
+              onChange={(e) => setAffiche(e.target.value)}
+              placeholder="https://… ou /evenements/…"
+              className={`${inputCls} flex-1 min-w-0`}
+            />
+            <label className="shrink-0 cursor-pointer inline-flex items-center bg-gray-100 hover:bg-gray-200 text-club-dark text-xs font-medium px-3 py-2 rounded-lg transition-colors">
+              {afficheUploading ? '…' : 'Upload'}
+              <input
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => { if (e.target.files?.[0]) uploadAffiche(e.target.files[0]) }}
+              />
+            </label>
+          </div>
+          {affiche && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={affiche} alt="Aperçu affiche" className="mt-2 h-24 w-auto rounded-lg object-cover border border-gray-200" />
+          )}
         </div>
       </div>
 

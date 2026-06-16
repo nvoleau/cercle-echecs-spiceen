@@ -56,7 +56,10 @@ export default async function ArticlePage({ params }: Props) {
   const article = await getArticle(slug)
   if (!article) notFound()
 
-  const htmlContent = await marked(article.contenu, { async: false })
+  // Contenu HTML (nouvel éditeur) ou Markdown (anciens articles) → toujours rendu en HTML
+  const htmlContent = article.contenu.trim().startsWith('<')
+    ? article.contenu
+    : (marked(article.contenu) as string)
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
