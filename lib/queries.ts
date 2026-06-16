@@ -73,6 +73,11 @@ export async function getEvenementById(id: string) {
   return rows[0] ?? null
 }
 
+export async function getHoraireById(id: string) {
+  const rows = await db.select().from(horaires).where(eq(horaires.id, id))
+  return rows[0] ?? null
+}
+
 export async function getResultats(): Promise<Resultats | null> {
   const saisonRows = await db.select().from(saisons).limit(1)
   if (!saisonRows[0]) return null
