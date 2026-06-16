@@ -41,7 +41,7 @@ export const config = {
   matcher: [
     '/admin(.*)',
     '/api/admin(.*)',
-    '/keystatic((?!/github-login).*)',
+    '/keystatic((?!-login)(?!-logout)(?!/github-login).*)',
     '/api/keystatic((?!/github).*)',
   ],
 }
