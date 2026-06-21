@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/evenements`,
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Événements du Cercle d\'Échecs Spicéen',

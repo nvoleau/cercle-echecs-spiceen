@@ -31,6 +31,7 @@ export const metadata: Metadata = {
     'cours échecs', 'compétition échecs', 'tournoi échecs Vendée',
     'club échecs Vendée', 'apprendre les échecs', 'échecs enfants',
     'Cercle Échecs Spicéen', 'championnat départemental échecs',
+    'jeu d\'échecs Les Epesses', 'échecs 85590', 'initiation échecs Vendée',
   ],
   authors: [{ name: 'Cercle d\'Échecs Spicéen' }],
   openGraph: {
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
       'Club d\'échecs affilié à la FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 8 ans. Première séance offerte.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Cercle d\'Échecs Spicéen — Club d\'échecs aux Epesses, Vendée',
@@ -55,9 +56,15 @@ export const metadata: Metadata = {
     title: 'Cercle d\'Échecs Spicéen — Club d\'échecs aux Epesses, Vendée',
     description:
       'Club d\'échecs affilié à la FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 8 ans.',
-    images: ['/og-image.png'],
+    images: ['/opengraph-image'],
   },
   robots: { index: true, follow: true },
+  other: {
+    'geo.region': 'FR-85',
+    'geo.placename': 'Les Epesses, Vendée',
+    'geo.position': '46.9120;-0.9793',
+    'ICBM': '46.9120, -0.9793',
+  },
 }
 
 const jsonLd = {
@@ -82,8 +89,8 @@ const jsonLd = {
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 46.9,
-    longitude: -1.0,
+    latitude: 46.9120,
+    longitude: -0.9793,
   },
   sport: 'Échecs',
   memberOf: {

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/contact`,
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Contact et inscription au Cercle d\'Échecs Spicéen',

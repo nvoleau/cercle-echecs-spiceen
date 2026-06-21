@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: '/og-image.png',
+        url: '/opengraph-image',
         width: 1200,
         height: 630,
         alt: 'Cercle d\'Échecs Spicéen — Club d\'échecs aux Epesses, Vendée',
@@ -57,6 +57,68 @@ const reasons = [
   },
 ]
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Où se situe le Cercle d\'Échecs Spicéen ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le club est situé à la Salle de la Colonne, aux Epesses (85590), en Vendée. Venez nous rendre visite lors d\'une séance, sans inscription préalable.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quels sont les horaires des séances d\'échecs ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Les séances ont lieu chaque lundi et chaque mercredi à 18h15, à la Salle de la Colonne aux Epesses (Vendée).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'À partir de quel âge peut-on rejoindre le club ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Le club accueille les joueurs dès 8 ans, tous niveaux confondus — des débutants complets aux joueurs classés.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'La première séance est-elle gratuite ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, la première séance est entièrement offerte et sans inscription préalable. Venez découvrir le club librement !',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Le club est-il affilié à la Fédération Française des Échecs ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Oui, le Cercle d\'Échecs Spicéen est affilié à la Fédération Française des Échecs (FFE). Le club participe au championnat départemental de Vendée et à des tournois ouverts.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Comment s\'inscrire au Cercle d\'Échecs Spicéen ?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'L\'inscription se fait en ligne via HelloAsso ou directement en venant lors d\'une séance. Vous pouvez aussi nous contacter par email à cercledechecspiceen@gmail.com ou par téléphone au 06 07 73 33 05.',
+      },
+    },
+  ],
+}
+
+const faqItems = [
+  { q: 'Quand ont lieu les séances ?', a: 'Chaque lundi et mercredi à 18h15, à la Salle de la Colonne, Les Epesses.' },
+  { q: 'À partir de quel âge ?', a: 'Dès 8 ans, tous niveaux — débutants comme joueurs classés.' },
+  { q: 'La première séance est-elle payante ?', a: 'Non, la première séance est offerte, sans inscription préalable.' },
+  { q: 'Comment s\'inscrire ?', a: 'En ligne via HelloAsso ou en venant directement lors d\'une séance.' },
+]
+
 export default async function HomePage() {
   const horaires = await getHoraires()
 
@@ -64,6 +126,10 @@ export default async function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative bg-club-dark overflow-hidden min-h-[80vh] flex items-center">
         <div
@@ -221,6 +287,23 @@ export default async function HomePage() {
           </div>
         </section>
       )}
+
+      {/* FAQ */}
+      <section className="py-20 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <SectionHeader label="Questions fréquentes" title="Tout ce qu'il faut savoir" centered />
+          </div>
+          <dl className="flex flex-col gap-4">
+            {faqItems.map((item) => (
+              <div key={item.q} className="rounded-xl border border-gray-200 px-6 py-5">
+                <dt className="font-semibold text-club-dark mb-1">{item.q}</dt>
+                <dd className="text-club-gray text-sm leading-relaxed">{item.a}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
 
       {/* CTA */}
       <section className="bg-club-gold py-16">

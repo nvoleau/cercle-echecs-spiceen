@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const ogImage = article.image_couverture
     ? { url: article.image_couverture, width: 1200, height: 630, alt: article.titre }
-    : { url: '/og-image.png', width: 1200, height: 630, alt: article.titre }
+    : { url: '/opengraph-image', width: 1200, height: 630, alt: article.titre }
 
   return {
     title: article.titre,
@@ -76,7 +76,18 @@ export default async function ArticlePage({ params }: Props) {
       logo: { '@type': 'ImageObject', url: `${siteUrl}/logo.png` },
     },
     url: `${siteUrl}/blog/${slug}`,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/blog/${slug}` },
     ...(article.image_couverture ? { image: { '@type': 'ImageObject', url: article.image_couverture } } : {}),
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteUrl}/blog` },
+      { '@type': 'ListItem', position: 3, name: article.titre, item: `${siteUrl}/blog/${slug}` },
+    ],
   }
 
   return (
@@ -84,6 +95,10 @@ export default async function ArticlePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       {article.image_couverture && (
