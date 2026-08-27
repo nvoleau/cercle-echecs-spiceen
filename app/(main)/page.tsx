@@ -300,7 +300,7 @@ export default async function HomePage() {
               <div>
                 <div className="flex items-end justify-between mb-10">
                   <SectionHeader
-                    label="Actualités"
+                    label={upcomingEvents.length === 0 ? 'Actualités' : undefined}
                     title="Derniers articles"
                   />
                   <Link

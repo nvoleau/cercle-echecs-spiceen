@@ -1,5 +1,5 @@
 interface SectionHeaderProps {
-  label: string
+  label?: string
   title: string
   subtitle?: string
   light?: boolean
@@ -17,9 +17,11 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={centered ? 'text-center' : ''}>
-      <p className="text-club-gold text-xs font-semibold tracking-[0.2em] uppercase mb-2">
-        {label}
-      </p>
+      {label && (
+        <p className="text-club-gold text-xs font-semibold tracking-[0.2em] uppercase mb-2">
+          {label}
+        </p>
+      )}
       <Heading
         className={`font-serif text-3xl md:text-4xl font-bold mb-4 ${
           light ? 'text-white' : 'text-club-dark'
