@@ -114,7 +114,7 @@ Dans le dashboard Vercel → **Settings** → **Environment Variables**, ajouter
 |---|---|---|
 | `RESEND_API_KEY` | Clé API [Resend](https://resend.com) pour les emails | Oui |
 | `CONTACT_EMAIL` | Email de réception du formulaire de contact | Oui |
-| `NEXT_PUBLIC_SITE_URL` | URL publique du site (ex: `https://cercle-echecs-spiceen.fr`) | Oui |
+| `NEXT_PUBLIC_SITE_URL` | URL publique du site (ex: `https://echecs-lesepesses.fr`) | Oui |
 | `KEYSTATIC_PASSWORD` | Mot de passe pour accéder à `/keystatic` | Oui |
 | `KEYSTATIC_SECRET` | Chaîne aléatoire longue pour signer le cookie de session | Oui |
 | `KEYSTATIC_GITHUB_CLIENT_ID` | Client ID de la GitHub OAuth App | Pour le CMS en prod |

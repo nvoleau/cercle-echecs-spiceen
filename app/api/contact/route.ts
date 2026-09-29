@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(apiKey)
 
     await resend.emails.send({
-      from: 'Site Web CES <noreply@cercle-echecs-spiceen.fr>',
+      from: 'Site Web CES <noreply@echecs-lesepesses.fr>',
       to: contactEmail,
       replyTo: email.trim(),
       subject: `[Contact CES] Message de ${nom.trim()}`,

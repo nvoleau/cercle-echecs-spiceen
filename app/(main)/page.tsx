@@ -11,7 +11,7 @@ import { isFutureEvent } from '@/lib/utils'
 
 export const dynamic = 'force-dynamic'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://echecs-lesepesses.fr'
 
 export const metadata: Metadata = {
   title: 'Club d\'échecs aux Epesses, Vendée — Cercle d\'Échecs Spicéen',

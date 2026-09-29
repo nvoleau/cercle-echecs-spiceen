@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 
 type Props = { params: Promise<{ slug: string }> }
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://echecs-lesepesses.fr'
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params

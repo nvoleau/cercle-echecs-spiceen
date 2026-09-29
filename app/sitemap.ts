@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getArticles } from '@/lib/queries'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://echecs-lesepesses.fr'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articlesList = await getArticles()

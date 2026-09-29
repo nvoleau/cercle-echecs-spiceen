@@ -16,7 +16,7 @@ const inter = Inter({
   display: 'swap',
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cercle-echecs-spiceen.fr'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://echecs-lesepesses.fr'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
