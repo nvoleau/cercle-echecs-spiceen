@@ -1,7 +1,7 @@
 import { eq, desc } from 'drizzle-orm'
 import { db } from './db'
-import { horaires, evenements, tarifs, saisons, competitions, matchs, articles } from './schema'
-import type { Horaire, Evenement, Resultats, Tarifs, Article } from './types'
+import { horaires, evenements, tarifs, saisons, competitions, matchs, articles, competitionArticles } from './schema'
+import type { Horaire, Evenement, Resultats, Tarifs, Article, CompetitionArticle } from './types'
 
 export async function getHoraires(): Promise<Horaire[]> {
   return db.select().from(horaires)
@@ -65,6 +65,39 @@ export async function getArticle(slug: string): Promise<(Article & { contenu: st
 
 export async function getArticleById(id: number) {
   const rows = await db.select().from(articles).where(eq(articles.id, id))
+  return rows[0] ?? null
+}
+
+export async function getCompetitionArticles(onlyPublished = true): Promise<CompetitionArticle[]> {
+  const rows = onlyPublished
+    ? await db.select().from(competitionArticles).where(eq(competitionArticles.publie, true)).orderBy(desc(competitionArticles.date))
+    : await db.select().from(competitionArticles).orderBy(desc(competitionArticles.date))
+  return rows.map((r) => ({
+    slug: r.slug,
+    titre: r.titre,
+    date: r.date,
+    resume: r.resume,
+    image_couverture: r.image_couverture ?? null,
+  }))
+}
+
+export async function getCompetitionArticle(slug: string): Promise<(CompetitionArticle & { contenu: string; id: number; publie: boolean }) | null> {
+  const rows = await db.select().from(competitionArticles).where(eq(competitionArticles.slug, slug))
+  if (!rows[0]) return null
+  return {
+    id: rows[0].id,
+    slug: rows[0].slug,
+    titre: rows[0].titre,
+    date: rows[0].date,
+    resume: rows[0].resume,
+    image_couverture: rows[0].image_couverture ?? null,
+    contenu: rows[0].contenu,
+    publie: rows[0].publie,
+  }
+}
+
+export async function getCompetitionArticleById(id: number) {
+  const rows = await db.select().from(competitionArticles).where(eq(competitionArticles.id, id))
   return rows[0] ?? null
 }
 

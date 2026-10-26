@@ -36,7 +36,7 @@ export default async function EvenementsPage() {
   const all = await getEvenements()
 
   const futurs = all.filter((e) => isFutureEvent(e.date))
-  const passes = all.filter((e) => !isFutureEvent(e.date))
+  const passes = all.filter((e) => !isFutureEvent(e.date)).sort((a, b) => b.date.localeCompare(a.date))
 
   const eventsJsonLd = futurs.map((event) => ({
     '@context': 'https://schema.org',

@@ -1,14 +1,15 @@
 import Link from 'next/link'
-import { FileText, CalendarDays, Clock, Euro } from 'lucide-react'
+import { FileText, CalendarDays, Clock, Euro, Trophy } from 'lucide-react'
 import { requireAdmin } from '@/lib/admin-auth'
-import { getArticles, getEvenements } from '@/lib/queries'
+import { getArticles, getCompetitionArticles, getEvenements } from '@/lib/queries'
 
 export const metadata = { title: 'Administration — CES' }
 
 export default async function AdminPage() {
   await requireAdmin()
-  const [articlesList, evenementsList] = await Promise.all([
+  const [articlesList, competitionArticlesList, evenementsList] = await Promise.all([
     getArticles(false),
+    getCompetitionArticles(false),
     getEvenements(),
   ])
 
@@ -19,6 +20,13 @@ export default async function AdminPage() {
       label: 'Articles',
       count: articlesList.length,
       action: 'Gérer les articles de blog',
+    },
+    {
+      href: '/admin/competition-articles',
+      icon: Trophy,
+      label: 'Articles de compétition',
+      count: competitionArticlesList.length,
+      action: 'Gérer les articles de compétition',
     },
     {
       href: '/admin/evenements',

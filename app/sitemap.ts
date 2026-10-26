@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next'
-import { getArticles } from '@/lib/queries'
+import { getArticles, getCompetitionArticles } from '@/lib/queries'
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://echecs-lesepesses.fr'
 
@@ -7,6 +7,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const articlesList = await getArticles()
   const articleEntries: MetadataRoute.Sitemap = articlesList.map((a) => ({
     url: `${siteUrl}/blog/${a.slug}`,
+    lastModified: new Date(a.date),
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
+  const competitionArticlesList = await getCompetitionArticles()
+  const competitionArticleEntries: MetadataRoute.Sitemap = competitionArticlesList.map((a) => ({
+    url: `${siteUrl}/competitions/${a.slug}`,
     lastModified: new Date(a.date),
     changeFrequency: 'monthly' as const,
     priority: 0.6,
@@ -50,5 +58,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     ...articleEntries,
+    ...competitionArticleEntries,
   ]
 }

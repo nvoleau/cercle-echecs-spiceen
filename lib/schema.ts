@@ -64,3 +64,14 @@ export const articles = pgTable('articles', {
   contenu: text('contenu').notNull().default(''),
   publie: boolean('publie').notNull().default(true),
 })
+
+export const competitionArticles = pgTable('competition_articles', {
+  id: serial('id').primaryKey(),
+  slug: text('slug').notNull().unique(),
+  titre: text('titre').notNull(),
+  date: text('date').notNull(),
+  resume: text('resume').notNull().default(''),
+  image_couverture: text('image_couverture'),
+  contenu: text('contenu').notNull().default(''),
+  publie: boolean('publie').notNull().default(true),
+})
