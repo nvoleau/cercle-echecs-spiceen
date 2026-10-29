@@ -101,6 +101,66 @@ export async function getCompetitionArticleById(id: number) {
   return rows[0] ?? null
 }
 
+export async function getSaisons() {
+  return db.select().from(saisons).orderBy(desc(saisons.id))
+}
+
+export async function getOrCreateSaisonId(saisonLabel: string): Promise<number> {
+  const label = saisonLabel.trim()
+  const existing = await db.select().from(saisons).where(eq(saisons.saison, label))
+  if (existing[0]) return existing[0].id
+  const inserted = await db.insert(saisons).values({ saison: label }).returning({ id: saisons.id })
+  return inserted[0].id
+}
+
+export async function getCompetitionsAdmin() {
+  const rows = await db
+    .select({
+      id: competitions.id,
+      nom: competitions.nom,
+      equipe: competitions.equipe,
+      classement: competitions.classement,
+      saison: saisons.saison,
+      saisonId: saisons.id,
+    })
+    .from(competitions)
+    .innerJoin(saisons, eq(competitions.saison_id, saisons.id))
+    .orderBy(desc(saisons.id), competitions.id)
+
+  const withCounts = await Promise.all(
+    rows.map(async (r) => {
+      const matchRows = await db.select().from(matchs).where(eq(matchs.competition_id, r.id))
+      return { ...r, nbMatchs: matchRows.length }
+    })
+  )
+  return withCounts
+}
+
+export async function getCompetitionAdminById(id: number) {
+  const rows = await db
+    .select({
+      id: competitions.id,
+      nom: competitions.nom,
+      equipe: competitions.equipe,
+      classement: competitions.classement,
+      saison_id: competitions.saison_id,
+      saison: saisons.saison,
+    })
+    .from(competitions)
+    .innerJoin(saisons, eq(competitions.saison_id, saisons.id))
+    .where(eq(competitions.id, id))
+  return rows[0] ?? null
+}
+
+export async function getMatchsByCompetition(competitionId: number) {
+  return db.select().from(matchs).where(eq(matchs.competition_id, competitionId)).orderBy(matchs.id)
+}
+
+export async function getMatchById(id: number) {
+  const rows = await db.select().from(matchs).where(eq(matchs.id, id))
+  return rows[0] ?? null
+}
+
 export async function getEvenementById(id: string) {
   const rows = await db.select().from(evenements).where(eq(evenements.id, id))
   return rows[0] ?? null
@@ -112,7 +172,7 @@ export async function getHoraireById(id: string) {
 }
 
 export async function getResultats(): Promise<Resultats | null> {
-  const saisonRows = await db.select().from(saisons).limit(1)
+  const saisonRows = await db.select().from(saisons).orderBy(desc(saisons.id)).limit(1)
   if (!saisonRows[0]) return null
 
   const saisonRow = saisonRows[0]
