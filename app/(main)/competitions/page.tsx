@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Trophy, TrendingUp } from 'lucide-react'
+import { Trophy, TrendingUp, ExternalLink } from 'lucide-react'
 import SectionHeader from '@/components/SectionHeader'
 import CompetitionArticleCard from '@/components/CompetitionArticleCard'
 import { getResultats, getCompetitionArticles } from '@/lib/queries'
@@ -66,13 +66,22 @@ export default async function CompetitionsPage() {
       )}
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-12">
+                <div className="mb-12">
           <SectionHeader
             label="Palmarès"
             title="Nos compétitions"
             subtitle="Le Cercle d'Échecs Spicéen est engagé en championnat départemental de Vendée et participe à des tournois ouverts."
             as="h1"
           />
+          <a
+            href="https://www.echecs.asso.fr/Equipes.aspx?Groupe=3220"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 text-club-gold font-semibold hover:gap-3 transition-all text-sm"
+          >
+            Calendrier et résultats du championnat sur le site de la FFE
+            <ExternalLink size={16} />
+          </a>
         </div>
 
         {articles.length > 0 && (

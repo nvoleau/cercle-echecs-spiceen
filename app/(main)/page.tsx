@@ -17,14 +17,14 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://echecs-lesepesses.f
 export const metadata: Metadata = {
   title: 'Club d\'échecs aux Epesses, Vendée — Cercle d\'Échecs Spicéen',
   description:
-    'Bienvenue au Cercle d\'Échecs Spicéen, club d\'échecs affilié FFE aux Epesses (Vendée, 85590). Séances tous niveaux chaque lundi et mercredi à 18h15. Première séance offerte, dès 8 ans.',
+    'Bienvenue au Cercle d\'Échecs Spicéen, club d\'échecs affilié FFE aux Epesses (Vendée, 85590). Séances tous niveaux chaque lundi et mercredi à 18h15. Première séance offerte, dès 5 ans.',
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
     title: 'Cercle d\'Échecs Spicéen — Club d\'échecs aux Epesses, Vendée',
     description:
-      'Club d\'échecs affilié FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 8 ans. Première séance offerte.',
+      'Club d\'échecs affilié FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 5 ans. Première séance offerte.',
     url: siteUrl,
     images: [
       {
@@ -56,7 +56,7 @@ const reasons = [
   {
     icon: School,
     title: 'Ouverture scolaire',
-    text: 'Le club accueille les jeunes dès 8 ans et collabore avec les établissements locaux pour initier les enfants aux échecs.',
+    text: 'Le club accueille les jeunes dès 5 ans et collabore avec les établissements locaux pour initier les enfants aux échecs.',
   },
 ]
 
@@ -85,7 +85,7 @@ const faqJsonLd = {
       name: 'À partir de quel âge peut-on rejoindre le club ?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Le club accueille les joueurs dès 8 ans, tous niveaux confondus — des débutants complets aux joueurs classés.',
+        text: 'Le club accueille les joueurs dès 5 ans, tous niveaux confondus — des débutants complets aux joueurs classés.',
       },
     },
     {
@@ -117,7 +117,7 @@ const faqJsonLd = {
 
 const faqItems = [
   { q: 'Quand ont lieu les séances ?', a: 'Chaque lundi et mercredi à 18h15, à la Salle de la Colonne, Les Epesses.' },
-  { q: 'À partir de quel âge ?', a: 'Dès 8 ans, tous niveaux — débutants comme joueurs classés.' },
+  { q: 'À partir de quel âge ?', a: 'Dès 5 ans, tous niveaux — débutants comme joueurs classés.' },
   { q: 'La première séance est-elle payante ?', a: 'Non, la première séance est offerte, sans inscription préalable.' },
   { q: 'Comment s\'inscrire ?', a: 'En ligne via HelloAsso ou en venant directement lors d\'une séance.' },
 ]
@@ -197,7 +197,7 @@ export default async function HomePage() {
               <div className="mt-8 flex flex-col gap-4">
                 {[
                   'Affilié à la Fédération Française des Échecs (FFE)',
-                  'Plus de 15 licenciés, des débutants aux classés',
+                  '22 licenciés, des débutants aux classés',
                   'Salle de la Colonne, Les Epesses (85590)',
                 ].map((text) => (
                   <div key={text} className="flex items-center gap-3 text-club-gray text-sm">

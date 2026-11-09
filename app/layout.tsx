@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: '%s | Cercle d\'Échecs Spicéen',
   },
   description:
-    'Club d\'échecs affilié à la FFE aux Epesses (Vendée, 85590). Cours, compétitions et séances conviviales pour tous les niveaux dès 8 ans. Séances lundi et mercredi à 18h15. Première séance offerte.',
+    'Club d\'échecs affilié à la FFE aux Epesses (Vendée, 85590). Cours, compétitions et séances conviviales pour tous les niveaux dès 5 ans. Séances lundi et mercredi à 18h15. Première séance offerte.',
   keywords: [
     'échecs', 'club échecs', 'Les Epesses', 'Vendée', '85590', 'FFE',
     'cours échecs', 'compétition échecs', 'tournoi échecs Vendée',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: 'Cercle d\'Échecs Spicéen',
     title: 'Cercle d\'Échecs Spicéen — Club d\'échecs aux Epesses, Vendée',
     description:
-      'Club d\'échecs affilié à la FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 8 ans. Première séance offerte.',
+      'Club d\'échecs affilié à la FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 5 ans. Première séance offerte.',
     images: [
       {
         url: '/opengraph-image',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Cercle d\'Échecs Spicéen — Club d\'échecs aux Epesses, Vendée',
     description:
-      'Club d\'échecs affilié à la FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 8 ans.',
+      'Club d\'échecs affilié à la FFE aux Epesses (Vendée). Séances lundi et mercredi à 18h15. Tous niveaux, dès 5 ans.',
     images: ['/opengraph-image'],
   },
   robots: { index: true, follow: true },
@@ -74,7 +74,7 @@ const jsonLd = {
   name: 'Cercle d\'Échecs Spicéen',
   alternateName: 'CES',
   description:
-    'Club d\'échecs affilié à la Fédération Française des Échecs (FFE), basé aux Epesses en Vendée. Ouvert à tous les niveaux dès 8 ans.',
+    'Club d\'échecs affilié à la Fédération Française des Échecs (FFE), basé aux Epesses en Vendée. Ouvert à tous les niveaux dès 5 ans.',
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   image: `${siteUrl}/logo.png`,
